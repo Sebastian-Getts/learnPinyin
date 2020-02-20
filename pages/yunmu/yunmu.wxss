@@ -1,0 +1,143 @@
+page {
+  background: rgb(126, 208, 214);
+}
+
+.flex-container {
+  /* We first create a flex layout context */
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-item {
+  background-color: rgb(76, 121, 81);
+  padding: 5rpx;
+  width: 200rpx;
+  height: 150rpx;
+  margin-top: 20rpx;
+  line-height: 150rpx;
+  color: white;
+  font-weight: bold;
+  font-size: 56rpx;
+  text-align: center;
+}
+
+.flex-item:active {
+  background-color: rgb(31, 80, 22);
+}
+
+.content {
+  /* We first create a flex layout context */
+  display: flex;
+  /* Then we define the flow direction 
+     and if we allow the items to wrap 
+   * Remember this is the same as:
+   * flex-direction: row;
+   * flex-wrap: wrap;
+   */
+  flex-flow: row wrap;
+  /* Then we define how is distributed the remaining space */
+  justify-content: space-around;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  margin-bottom: 20rpx;
+}
+
+.choose-box {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  border-bottom: solid 1rpx gray;
+  background: rgb(110, 106, 129);
+}
+
+.choose {
+  background-color: rgb(212, 39, 198);
+  padding: 5rpx;
+  width: 200rpx;
+  height: 150rpx;
+  margin-top: 20rpx;
+  line-height: 150rpx;
+  color: white;
+  font-weight: bold;
+  font-size: 56rpx;
+  text-align: center;
+  border-radius: 50rpx;
+  margin-bottom: 10rpx;
+}
+
+.choose1 {
+  background-color: rgb(212, 157, 39);
+  padding: 5rpx;
+  width: 200rpx;
+  height: 150rpx;
+  margin-top: 20rpx;
+  line-height: 150rpx;
+  color: white;
+  font-weight: bold;
+  font-size: 56rpx;
+  text-align: center;
+  border-radius: 50rpx;
+  margin-bottom: 10rpx;
+}
+
+.choose2 {
+  background-color: rgb(61, 109, 182);
+  padding: 5rpx;
+  width: 200rpx;
+  height: 150rpx;
+  margin-top: 20rpx;
+  line-height: 150rpx;
+  color: white;
+  font-weight: bold;
+  font-size: 56rpx;
+  text-align: center;
+  border-radius: 50rpx;
+  margin-bottom: 10rpx;
+}
+
+.choose3 {
+  background-color: rgb(216, 115, 57);
+  padding: 5rpx;
+  width: 200rpx;
+  height: 150rpx;
+  margin-top: 20rpx;
+  line-height: 150rpx;
+  color: white;
+  font-weight: bold;
+  font-size: 56rpx;
+  text-align: center;
+  border-radius: 50rpx;
+  margin-bottom: 10rpx;
+}
+
+.choose1:active {
+  background: rgb(231, 219, 165);
+}
+
+.choose2:active {
+  background: rgb(161, 231, 236);
+}
+
+.choose3:active{
+  background: rgb(116, 61, 29)
+}
+
+.flex-item-display {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(92, 63, 69);
+  padding: 5rpx;
+  width: 200rpx;
+  height: 160rpx;
+  margin-top: 20rpx;
+  line-height: 80rpx;
+  color: white;
+  font-weight: bold;
+  font-size: 40rpx;
+  text-align: center;
+}
+

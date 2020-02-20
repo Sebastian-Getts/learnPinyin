@@ -1,0 +1,23 @@
+<view class="box">
+  <text class="line">使用说明</text>
+  <text class="line" style="font-size: 36rpx">基础</text>
+  <text class="content"> 全局分两部分，顶部操作栏，顶部下方是展示区域。顶部操作栏有六个按钮，分两行。第一行是选择按钮，三选一，选中后会在下发展示区域展示相关内容。第二行是操作按钮。</text>
+  <text class="line" style="font-size: 36rpx">进阶</text>
+  <text class="content">用来熟悉字母在九键键盘中的布局。屏幕中间灰色部分会随机显示五个字母，使用者需要按顺序依次按下虚拟键盘中包含目标字母的按键，待五个字母全部输入正确后，按空格键确认，之后会重新生产五个目标字母。</text>
+  <text class="line">初衷</text>
+  <text class="content">给父母以及其他长辈用来学习汉语拼音。</text>
+  <text class="line">项目</text>
+  <text class="content" style="text-decoration:line-through">小程序源代码会放置GitHub托管，欢迎提issue。</text>
+  <text class="line">联系作者</text>
+  <text class="content">如果您对此小程序有什么建议或者意见，欢迎提出，也可以做技术交流，非诚勿扰。</text>
+  <view class="contact">
+    <view class="social">
+      <image src="/utils/images/about/email.png"></image>
+      <text selectable> 2573992956@qq.com</text>
+    </view>
+    <view class="social">
+      <image src="/utils/images/about/social_github.png"></image>
+      <text selectable> ********</text>
+    </view>
+  </view>
+</view>

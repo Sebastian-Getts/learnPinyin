@@ -1,0 +1,41 @@
+page {
+  background: rgba(208, 234, 236, 0.808);
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  margin: 20rpx;
+}
+
+.line {
+  display: flex;
+  flex-direction: column;
+  font-size: 40rpx;
+  text-align: cneter;
+  border-bottom: 1rpx solid;
+}
+
+.box text {
+  margin-top: 30rpx;
+}
+
+.content {
+  text-indent: 2em;
+}
+
+.box image {
+  width: 50rpx;
+  height: 40rpx;
+  vertical-align: top;
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10rpx;
+}
+
+.social {
+  margin-top: 10rpx;
+}

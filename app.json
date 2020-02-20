@@ -1,0 +1,39 @@
+{
+  "pages": [
+    "pages/yunmu/yunmu",
+    "pages/about/about",
+    "pages/shengmu/shengmu",
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/yunmu/yunmu",
+        "text": "基础",
+        "iconPath": "utils/images/yunmu/yun.png",
+        "selectedIconPath": "utils/images/yunmu/yuned.png"
+      },
+      {
+        "pagePath": "pages/shengmu/shengmu",
+        "text": "进阶",
+        "iconPath": "utils/images/shengmu/sheng2.png",
+        "selectedIconPath": "utils/images/shengmu/shenged.png"
+      },
+      {
+        "pagePath": "pages/about/about",
+        "text": "关于",
+        "iconPath": "utils/images/about/about.png",
+        "selectedIconPath": "utils/images/about/abouted.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

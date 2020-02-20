@@ -1,0 +1,54 @@
+page {
+  background: rgba(134, 224, 126, 0.808);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.keyborad {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  background: rgb(62, 63, 56);
+  width: 100%;
+  bottom: 0;
+  position: fixed;
+}
+
+.boardbtn {
+  width: 150rpx;
+  height: 100rpx;
+  background: rgb(216, 213, 233);
+  margin: 20rpx;
+  text-align: center;
+  line-height: 100rpx;
+  padding: 5rpx;
+  border-radius: 30rpx;
+}
+
+.boardbtn:active {
+  background: rgb(158, 145, 231);
+}
+
+.screen {
+  background: rgb(129, 123, 122);
+  width: 92%;
+  height: 280rpx;
+  margin-top: -90rpx;
+  border-radius: 50rpx;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+.singleLetter {
+  /* background: rgb(44, 68, 39); */
+  width: 180rpx;
+  text-align: center;
+  line-height: 136rpx;
+  border-radius: 170rpx;
+  font-size: 46rpx;
+  font-weight: bold;
+}
