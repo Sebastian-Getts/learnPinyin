@@ -17,7 +17,7 @@
     </view>
     <view class="social">
       <image src="/utils/images/about/social_github.png"></image>
-      <text selectable> ********</text>
+      <text selectable> https://github.com/Sebastian-Getts/learnPinyin</text>
     </view>
   </view>
 </view>
