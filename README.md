@@ -11,3 +11,11 @@
 ## 目的
 
 帮助长辈熟悉拼音。
+
+## 体验
+
+扫描下方的小程序码体验
+
+
+
+![pinyin.jpg](https://i.loli.net/2020/02/23/LOpUiVxIaM825lW.jpg)
