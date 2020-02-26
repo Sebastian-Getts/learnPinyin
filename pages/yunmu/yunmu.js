@@ -434,6 +434,9 @@ Page({
   },
 
   displaybtn() {
+    if (this.data.display == false) {
+      this.resume();
+    }
     this.setData({
       display: !this.data.display
     })

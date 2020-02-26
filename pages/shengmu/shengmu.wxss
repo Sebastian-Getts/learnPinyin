@@ -35,12 +35,12 @@ page {
 .screen {
   background: rgb(129, 123, 122);
   width: 92%;
-  height: 280rpx;
-  margin-top: -90rpx;
   border-radius: 50rpx;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
+  padding: 16rpx;
+  margin: auto;
 }
 
 .singleLetter {
@@ -51,4 +51,16 @@ page {
   border-radius: 170rpx;
   font-size: 46rpx;
   font-weight: bold;
+}
+
+.changebtn {
+  background: rgba(145, 231, 247, 0.333);
+  border: 2rpx solid grey;
+  border-radius: 70rpx;
+  display: flex;
+  width: 120rpx;
+  height: 120rpx;
+  align-items: center;
+  justify-content: center;
+  margin: 30rpx 10rpx;
 }

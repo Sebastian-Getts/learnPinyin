@@ -1,13 +1,16 @@
-<view class="container">
-  <view class="screen">
-    <view class="singleLetter" wx:key="{{index}}" wx:for="{{exam}}" style="color:{{item.value==true?'white':'black'}};background:{{item.value==true? 'rgb(65, 60, 60)':'rgb(129, 123, 122)'}} ">
-      {{item.name}}
-    </view>
-  </view>
-  <view class="keyborad">
-    <view wx:key="{{index}}" wx:for="{{list}}" class="boardbtn" bindtap="boardbtn" id="{{item}}">
-      {{item}}
-    </view>
-    <view class="boardbtn" bindtap="blankbtn" style="width:500rpx">空格</view>
+<!-- <view class="container"> -->
+<view class="screen">
+  <view class="singleLetter" wx:key="{{index}}" wx:for="{{exam}}" style="color:{{item.value==true?'white':'black'}};background:{{item.value==true? 'rgb(65, 60, 60)':'rgb(129, 123, 122)'}} ">
+    {{item.name}}
   </view>
 </view>
+<view class="changebtn" bindtap="changekbor">
+  全键盘
+</view>
+<view class="keyborad">
+  <view wx:key="{{index}}" wx:for="{{list}}" class="boardbtn" bindtap="boardbtn" id="{{item}}">
+    {{item}}
+  </view>
+  <view class="boardbtn" bindtap="blankbtn" style="width:500rpx">空格</view>
+</view>
+<!-- </view> -->
