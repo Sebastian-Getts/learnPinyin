@@ -8,6 +8,23 @@ page {
   flex-direction: column;
 }
 
+.topbar {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: linear-gradient(120deg, rgb(216, 123, 123), rgb(115, 115, 185));
+  font-size: 26rpx;
+}
+
+.topbar .avatar {
+  height: 30rpx;
+  width: 30rpx;
+  border-radius: 70rpx;
+  overflow: hidden;
+  margin: 6rpx 20rpx;
+}
+
 .flex-item {
   background-color: rgb(76, 121, 81);
   padding: 5rpx;
@@ -122,8 +139,8 @@ page {
   background: rgb(161, 231, 236);
 }
 
-.choose3:active{
-  background: rgb(116, 61, 29)
+.choose3:active {
+  background: rgb(116, 61, 29);
 }
 
 .flex-item-display {
@@ -140,4 +157,3 @@ page {
   font-size: 40rpx;
   text-align: center;
 }
-

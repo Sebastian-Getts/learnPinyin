@@ -379,10 +379,9 @@ Page({
     })
   },
 
-  resume() {
+  resume(v = false) {
     var list = this.data.list;
     var map;
-    var v = false;;
     for (var i = 0; i < list.length; i++) {
       map = list[i];
       if (!map.flag) {
@@ -390,7 +389,7 @@ Page({
         v = true;
       }
     }
-    if (v) {
+    if (v == true) {
       this.setData({
         list: list
       })
@@ -435,20 +434,47 @@ Page({
 
   displaybtn() {
     if (this.data.display == false) {
-      this.resume();
+      this.resume(true);
     }
     this.setData({
       display: !this.data.display
     })
   },
 
+
+  formatTime() {
+    var now = new Date(),
+      hour = now.getHours()
+    var greetText;
+    if (hour < 6) {
+      greetText = "凌晨好, "
+    } else if (hour < 9) {
+      greetText = "早上好, "
+    } else if (hour < 12) {
+      greetText = "上午好, "
+    } else if (hour < 14) {
+      greetText = "中午好, "
+    } else if (hour < 17) {
+      greetText = "下午好, "
+    } else if (hour < 19) {
+      greetText = "傍晚好, "
+    } else if (hour < 22) {
+      greetText = "晚上好, "
+    } else {
+      greetText = "夜里好, "
+    }
+    return greetText
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    var greetText = this.formatTime();
     this.setData({
       list: this.data.list2,
-      bg2: true
+      bg2: true,
+      greet: greetText
     })
   },
 

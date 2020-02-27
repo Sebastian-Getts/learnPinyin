@@ -1,6 +1,6 @@
 {
   "pages": [
-    "pages/yunmu/yunmu",
+    "pages/basic/yunmu",
     "pages/about/about",
     "pages/shengmu/shengmu",
     "pages/index/index",
@@ -15,10 +15,10 @@
   "tabBar": {
     "list": [
       {
-        "pagePath": "pages/yunmu/yunmu",
+        "pagePath": "pages/basic/yunmu",
         "text": "基础",
-        "iconPath": "utils/images/yunmu/yun.png",
-        "selectedIconPath": "utils/images/yunmu/yuned.png"
+        "iconPath": "utils/images/basic/yun.png",
+        "selectedIconPath": "utils/images/basic/yuned.png"
       },
       {
         "pagePath": "pages/shengmu/shengmu",
