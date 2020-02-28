@@ -5,12 +5,37 @@
   </view>
 </view>
 <view class="changebtn" bindtap="changekbor">
-  全键盘
+  <p wx:if='{{showOrNot}}'>九键</p>
+  <p wx:else>全键盘</p>
 </view>
-<view class="keyborad">
+<view class="keyboard2" wx:if='{{showOrNot}}'>
+  <view class="firstline">
+    <view class="twentysixbtn" wx:for="{{qwe}}" wx:key="index" bindtap="boardbtn" id="{{item}}">{{item}}</view>
+  </view>
+  <view class="firstline">
+    <view class="twentysixbtn" wx:for="{{asd}}" wx:key="index" bindtap="boardbtn" id="{{item}}">{{item}}</view>
+  </view>
+  <view class="firstline">
+    <view class="cap" bindtap="test">
+      <image src="/utils/images/shengmu/cap.png"></image>
+    </view>
+    <view class="twentysixbtn" wx:for="{{zxc}}" wx:key="index" bindtap="boardbtn" id="{{item}}">{{item}}</view>
+    <view class="cap" bindtap="test">
+      <image src="/utils/images/shengmu/delete.png"></image>
+    </view>
+  </view>
+  <view class="lastline">
+    <view class="check" bindtap="test">123</view>
+    <view class="check" bindtap="test">^-^</view>
+    <view class="boardbtn2" bindtap="blankbtn">空 格</view>
+    <view class="check2" bindtap="test">确 认</view>
+  </view>
+</view>
+<view class="keyborad" wx:else>
   <view wx:key="{{index}}" wx:for="{{list}}" class="boardbtn" bindtap="boardbtn" id="{{item}}">
     {{item}}
   </view>
   <view class="boardbtn" bindtap="blankbtn" style="width:500rpx">空格</view>
 </view>
+
 <!-- </view> -->

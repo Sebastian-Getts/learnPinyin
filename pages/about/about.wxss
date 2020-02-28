@@ -38,4 +38,5 @@ page {
 
 .social {
   margin-top: 10rpx;
+  font-size: 24rpx;
 }

@@ -4,7 +4,7 @@
       <open-data type="userAvatarUrl"></open-data>
     </view>
     {{greet}}
-    <open-data type="userNickName"></open-data>
+    <open-data class="nickname" type="userNickName"></open-data>
   </view>
   <view class="choose-box">
     <view class="choose" bindtap="choose" id='2' style="background:{{bg2==false?'rgb(156, 118, 153)':'rgb(117, 7, 108)'}}">声母</view>

@@ -25,6 +25,10 @@ page {
   margin: 6rpx 20rpx;
 }
 
+.topbar  .nickname {
+  margin-left: 6rpx;
+}
+
 .flex-item {
   background-color: rgb(76, 121, 81);
   padding: 5rpx;

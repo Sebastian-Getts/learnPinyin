@@ -7,11 +7,15 @@ Page({
   data: {
     list: [",/。", "ABC", "DEF", "GHI", "JKL", "MNO", "PQRS", "TUV", "WXYZ"],
     list2: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"],
+    qwe: ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
+    asd: ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
+    zxc: ['z', 'x', 'c', 'v', 'b', 'n', 'm'],
     exam: []
   },
 
   boardbtn(e) {
     var v = e.target.id;
+    v = v.toUpperCase();
     var exam = this.data.exam;
     var target;
     var i = 0;
@@ -90,8 +94,14 @@ Page({
     }
   },
   changekbor() {
+    this.setData({
+      showOrNot: !this.data.showOrNot
+    })
+  },
+
+  test() {
     wx.showToast({
-      title: '功能开发中~',
+      title: '还在开发中~',
       icon: 'none'
     })
   },

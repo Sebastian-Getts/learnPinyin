@@ -54,7 +54,7 @@ page {
 }
 
 .changebtn {
-  background: rgba(145, 231, 247, 0.333);
+  background: rgba(52, 83, 88, 0.548);
   border: 2rpx solid grey;
   border-radius: 70rpx;
   display: flex;
@@ -63,4 +63,118 @@ page {
   align-items: center;
   justify-content: center;
   margin: 30rpx 10rpx;
+}
+
+.changebtn:active {
+  background: rgb(97, 63, 95);
+}
+
+.keyboard2 {
+  display: flex;
+  flex-direction: column;
+  background: rgb(62, 63, 56);
+  width: 100%;
+  bottom: 0;
+  position: fixed;
+  align-items: center;
+}
+
+.keyboard2 .firstline {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 56rpx;
+}
+
+.keyboard2 .firstline .twentysixbtn {
+  background: rgb(210, 211, 205);
+  margin: 0rpx 12rpx;
+  font-size: 44rpx;
+  height: 90rpx;
+  width: 52rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.keyboard2 .firstline .cap {
+  background: rgb(83, 83, 82);
+  margin: 0rpx 20rpx;
+  font-size: 36rpx;
+  height: 84rpx;
+  width: 74rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.keyboard2 .firstline .cap image {
+  height: 54rpx;
+  width: 54rpx;
+}
+
+.keyboard2 .firstline .boardbtn2 {
+  display: flex;
+  width: 50%;
+  background: rgb(210, 211, 205);
+  align-items: center;
+  justify-content: center;
+}
+
+.keyboard2 .lastline {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 20rpx;
+  margin-top: 56rpx;
+}
+
+.keyboard2 .lastline .boardbtn2 {
+  display: flex;
+  width: 60%;
+  align-items: center;
+  justify-content: center;
+  background: rgb(210, 211, 205);
+}
+
+.keyboard2 .lastline .check {
+  background: rgb(83, 83, 82);
+  font-size: 36rpx;
+  height: 84rpx;
+  width: 74rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.keyboard2 .lastline .check2 {
+  background: rgb(25, 68, 160);
+  font-size: 36rpx;
+  height: 84rpx;
+  width: 90rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10rpx;
+}
+
+.keyboard2 .lastline .check:first-child {
+  margin-left: 10rpx;
+}
+
+.keyboard2 .firstline view, .lastline view {
+  border-radius: 12rpx;
+}
+
+.keyboard2 .firstline view:active, .keyboard2 .lastline .boardbtn2:active {
+  background: rgb(88, 88, 87);
+}
+
+.keyboard2 .firstline .cap:active, .keyboard2 .lastline .check:active {
+  background: rgb(184, 184, 181);
+}
+
+.keyboard2 .lastline .check2:active {
+  background: rgb(88, 134, 233);
 }
