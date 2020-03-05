@@ -10,19 +10,24 @@ Page({
     qwe: ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
     asd: ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
     zxc: ['z', 'x', 'c', 'v', 'b', 'n', 'm'],
-    exam: []
+    exam: [],
+    bingo: false
   },
 
   boardbtn(e) {
-    var v = e.target.id;
+    let v = e.target.id;
     v = v.toUpperCase();
-    var exam = this.data.exam;
+    const exam = this.data.exam;
     var target;
     var i = 0;
-    //获取目标元素
+    let flag = false;
+    //获取screen目标元素
     for (i; i < exam.length; i++) {
       if (exam[i].value == false) {
         target = exam[i].name;
+        if (i == (exam.length - 1)) {
+          flag = true;
+        }
         break;
       }
     }
@@ -32,16 +37,30 @@ Page({
         title: '全部正确！请按空格键~',
         icon: 'none'
       })
+      this.setData({
+        bingo: true
+      })
     } else {
       //匹配按键字母
       for (var j = 0; j < v.length; j++) {
         if (v[j] == target) {
           exam[i].value = true; //更改判断标识
           this.setData({
-            exam: exam
+            exam: exam,
           })
           break;
         }
+      }
+      if (flag) {
+        var that = this;
+        setTimeout(function () {
+          that.setData({
+            bingo: flag
+          })
+        }, 200); //延迟时间 这里是1秒
+        setTimeout(function () {
+          that.blankbtn();
+        }, 1000)
       }
     }
   },
@@ -70,7 +89,8 @@ Page({
       target.push(map);
     }
     this.setData({
-      exam: target
+      exam: target,
+      bingo: false
     })
   },
 
@@ -109,56 +129,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     this.generate();
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
-
-  }
 })

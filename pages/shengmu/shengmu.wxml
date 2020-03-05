@@ -1,5 +1,5 @@
 <!-- <view class="container"> -->
-<view class="screen">
+<view class="screen" style="background: {{bingo==true?'rgb(65, 60, 60)':''}}">
   <view class="singleLetter" wx:key="{{index}}" wx:for="{{exam}}" style="color:{{item.value==true?'white':'black'}};background:{{item.value==true? 'rgb(65, 60, 60)':'rgb(129, 123, 122)'}} ">
     {{item.name}}
   </view>
@@ -10,16 +10,22 @@
 </view>
 <view class="keyboard2" wx:if='{{showOrNot}}'>
   <view class="firstline">
-    <view class="twentysixbtn" wx:for="{{qwe}}" wx:key="index" bindtap="boardbtn" id="{{item}}">{{item}}</view>
+    <view class="twentysixbtn" wx:for="{{qwe}}" wx:key="index" bindtap="boardbtn" id="{{item}}">
+      {{item}}
+    </view>
   </view>
   <view class="firstline">
-    <view class="twentysixbtn" wx:for="{{asd}}" wx:key="index" bindtap="boardbtn" id="{{item}}">{{item}}</view>
+    <view class="twentysixbtn" wx:for="{{asd}}" wx:key="index" bindtap="boardbtn" id="{{item}}">
+      {{item}}
+    </view>
   </view>
   <view class="firstline">
     <view class="cap" bindtap="test">
       <image src="/utils/images/shengmu/cap.png"></image>
     </view>
-    <view class="twentysixbtn" wx:for="{{zxc}}" wx:key="index" bindtap="boardbtn" id="{{item}}">{{item}}</view>
+    <view class="twentysixbtn" wx:for="{{zxc}}" wx:key="index" bindtap="boardbtn" id="{{item}}">
+      {{item}}
+    </view>
     <view class="cap" bindtap="test">
       <image src="/utils/images/shengmu/delete.png"></image>
     </view>
@@ -37,5 +43,4 @@
   </view>
   <view class="boardbtn" bindtap="blankbtn" style="width:500rpx">空格</view>
 </view>
-
 <!-- </view> -->
