@@ -47,20 +47,20 @@ Page({
           exam[i].value = true; //更改判断标识
           this.setData({
             exam: exam,
-          })
+          });
+          if (flag) {
+            var that = this;
+            setTimeout(function () {
+              that.setData({
+                bingo: flag
+              })
+            }, 200); //延迟时间 这里是1秒
+            setTimeout(function () {
+              that.blankbtn();
+            }, 1000)
+          }
           break;
         }
-      }
-      if (flag) {
-        var that = this;
-        setTimeout(function () {
-          that.setData({
-            bingo: flag
-          })
-        }, 200); //延迟时间 这里是1秒
-        setTimeout(function () {
-          that.blankbtn();
-        }, 1000)
       }
     }
   },
@@ -95,7 +95,7 @@ Page({
   },
 
   blankbtn() {
-    console.log('blank btn clicked...');
+    // console.log('blank btn clicked...');
     var exam = this.data.exam;
     var flag = true;
     for (var i = 0; i < exam.length; i++) {
@@ -132,4 +132,12 @@ Page({
   onLoad: function (options) {
     this.generate();
   },
+
+  changeScreen(){
+    wx.showToast({
+      title: '功能开发中~',
+      icon: 'none',
+    });
+      
+  }
 })

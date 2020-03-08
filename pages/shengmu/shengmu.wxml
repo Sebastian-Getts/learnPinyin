@@ -4,9 +4,14 @@
     {{item.name}}
   </view>
 </view>
-<view class="changebtn" bindtap="changekbor">
-  <p wx:if='{{showOrNot}}'>九键</p>
-  <p wx:else>全键盘</p>
+<view class="midControll">
+  <view class="changebtn" bindtap="changekbor">
+    <p wx:if='{{showOrNot}}'>九键</p>
+    <p wx:else>全键盘</p>
+  </view>
+    <view class="changebtn" bindtap="changeScreen" style="background: rgba(86, 145, 81, 0.808)">
+    <p>挑战</p>
+  </view>
 </view>
 <view class="keyboard2" wx:if='{{showOrNot}}'>
   <view class="firstline">

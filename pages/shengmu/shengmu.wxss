@@ -53,8 +53,16 @@ page {
   font-weight: bold;
 }
 
+.midControll{
+  margin: 30rpx 10rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
 .changebtn {
-  background: rgba(52, 83, 88, 0.548);
+  background: linear-gradient(120deg, rgb(46, 78, 46), rgb(71, 172, 96));
   border: 2rpx solid grey;
   border-radius: 70rpx;
   display: flex;
@@ -62,7 +70,7 @@ page {
   height: 120rpx;
   align-items: center;
   justify-content: center;
-  margin: 30rpx 10rpx;
+
 }
 
 .changebtn:active {
