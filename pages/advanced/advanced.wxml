@@ -1,7 +1,13 @@
 <!-- <view class="container"> -->
-<view class="screen" style="background: {{bingo==true?'rgb(65, 60, 60)':''}}">
+<view wx:if="{{letterOrWord}}" class="screen" style="background: {{bingo==true?'rgb(65, 60, 60)':''}}">
   <view class="singleLetter" wx:key="{{index}}" wx:for="{{exam}}" style="color:{{item.value==true?'white':'black'}};background:{{item.value==true? 'rgb(65, 60, 60)':'rgb(129, 123, 122)'}} ">
     {{item.name}}
+  </view>
+</view>
+<view wx:else class="screenChalenge">
+  <view class="singleWord" wx:key="{{index}}" wx:for="{{challenge}}" style="color:{{item.value==true?'white':'black'}};background:{{item.value==true? 'rgb(65, 60, 60)':'rgb(129, 123, 122)'}} ">
+    <view class="word">{{item.word}}</view>
+    <view class="pinyin">{{item.pinyin}}</view>
   </view>
 </view>
 <view class="midControll">
@@ -9,7 +15,7 @@
     <p wx:if='{{showOrNot}}'>九键</p>
     <p wx:else>全键盘</p>
   </view>
-    <view class="changebtn" bindtap="changeScreen" style="background: rgba(86, 145, 81, 0.808)">
+  <view class="changebtn" bindtap="changeScreen" style="background: {{letterOrWord==false?'rgb(97, 63, 95)':'linear-gradient(120deg, rgb(46, 78, 46), rgb(71, 172, 96))'}}">
     <p>挑战</p>
   </view>
 </view>

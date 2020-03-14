@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/basic/yunmu",
-    "pages/shengmu/shengmu",
+    "pages/basic/basic",
+    "pages/advanced/advanced",
     "pages/about/about",
     "pages/index/index",
     "pages/logs/logs"
@@ -15,13 +15,13 @@
   "tabBar": {
     "list": [
       {
-        "pagePath": "pages/basic/yunmu",
+        "pagePath": "pages/basic/basic",
         "text": "基础",
         "iconPath": "utils/images/basic/yun.png",
         "selectedIconPath": "utils/images/basic/yuned.png"
       },
       {
-        "pagePath": "pages/shengmu/shengmu",
+        "pagePath": "pages/advanced/advanced",
         "text": "进阶",
         "iconPath": "utils/images/shengmu/sheng2.png",
         "selectedIconPath": "utils/images/shengmu/shenged.png"

@@ -11,7 +11,9 @@ Page({
     asd: ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
     zxc: ['z', 'x', 'c', 'v', 'b', 'n', 'm'],
     exam: [],
-    bingo: false
+    bingo: false,
+    letterOrWord: true,
+    challenge: [{ word: '好', pinyin: 'hao', value: false }]
   },
 
   boardbtn(e) {
@@ -121,9 +123,9 @@ Page({
 
   test() {
     wx.showToast({
-      title: '还在开发中~',
-      icon: 'none'
-    })
+      title: '功能开发中~',
+      icon: 'none',
+    });
   },
 
   /**
@@ -133,11 +135,11 @@ Page({
     this.generate();
   },
 
-  changeScreen(){
-    wx.showToast({
-      title: '功能开发中~',
-      icon: 'none',
-    });
-      
+  changeScreen() {
+    this.setData({
+      letterOrWord: !this.data.letterOrWord
+    })
+
+
   }
 })

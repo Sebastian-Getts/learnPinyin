@@ -48,8 +48,8 @@
 			"list": [
 				{
 					"id": 0,
-					"name": "pages/basic/yunmu",
-					"pathName": "pages/shengmu/shengmu",
+					"name": "advanced",
+					"pathName": "pages/advanced/advanced",
 					"query": "",
 					"scene": null
 				}
