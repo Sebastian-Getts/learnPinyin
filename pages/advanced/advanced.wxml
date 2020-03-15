@@ -9,6 +9,9 @@
     <view class="word">{{item.word}}</view>
     <view class="pinyin">{{item.pinyin}}</view>
   </view>
+  <view class="more" bindtap="getmore">
+    >>更多
+  </view>
 </view>
 <view class="midControll">
   <view class="changebtn" bindtap="changekbor">

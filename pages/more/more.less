@@ -1,0 +1,51 @@
+page {
+    background-color: #cccccc;
+}
+
+.wordCard {
+    display       : flex;
+    flex-direction: column;
+    margin        : 0 10rpx;
+    background    : linear-gradient(120deg, rgb(140, 144, 148), rgb(145, 194, 240));
+
+    .word_wrap {
+        display        : flex;
+        align-items    : center;
+        justify-content: space-around;
+        padding        : 20rpx;
+
+        .word {
+            display    : flex;
+            font-size  : 60rpx;
+            font-weight: 600;
+        }
+
+        .pinyin {
+            display  : flex;
+            font-size: 40rpx;
+        }
+    }
+
+    .jijie {
+        margin: 10rpx 0;
+
+        .jijie_item {
+            margin: 6rpx 10rpx;
+        }
+    }
+}
+
+.history {
+    display       : flex;
+    flex-direction: column;
+    margin        : 10rpx;
+
+    .history_btn {
+        height     : 70rpx;
+        width      : 80%;
+        display    : flex;
+        align-items: center;
+        background : linear-gradient(120deg, rgb(96, 112, 128), rgb(73, 150, 223));
+        text-indent: 1em;
+    }
+}

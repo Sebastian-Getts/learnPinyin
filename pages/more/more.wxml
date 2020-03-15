@@ -1,0 +1,16 @@
+<view class="wordCard">
+    <view class="word_wrap">
+        <view class="word">{{word}}</view>
+        <view class="pinyin">{{pinyin}}</view>
+    </view>
+    <view class="jijie">
+        <!-- 要考虑多音字 -->
+        <view class="jijie_item" wx:for="{{jijie}}" wx:key="index">{{item}}</view>
+    </view>
+</view>
+
+<view class="history">
+    <view class="history_btn" bindtap="gethistory">
+        你知道吗？ 历史上的今天 >>
+    </view>
+</view>

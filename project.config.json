@@ -13,7 +13,7 @@
 		"coverView": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.10.1",
+	"libVersion": "2.10.3",
 	"appid": "wxad52309b82fd0e93",
 	"projectname": "learnPinyin",
 	"debugOptions": {
@@ -48,9 +48,9 @@
 			"list": [
 				{
 					"id": 0,
-					"name": "advanced",
-					"pathName": "pages/advanced/advanced",
-					"query": "",
+					"name": "more",
+					"pathName": "pages/more/more",
+					"query": "word=好",
 					"scene": null
 				}
 			]

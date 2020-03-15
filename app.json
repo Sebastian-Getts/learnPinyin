@@ -4,7 +4,8 @@
     "pages/advanced/advanced",
     "pages/about/about",
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/more/more"
   ],
   "window": {
     "backgroundTextStyle": "light",

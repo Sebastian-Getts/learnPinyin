@@ -66,10 +66,18 @@ page {
   height         : 272rpx;
 }
 
+.screenChalenge .more {
+  font-size   : 36rpx;
+  color       : blue;
+  text-align  : right;
+  margin-right: 20rpx;
+}
+
 .singleWord {
   display       : flex;
   flex-direction: column;
-  align-items: center;
+  align-items   : center;
+  height: 80%;
 }
 
 .singleWord .word {

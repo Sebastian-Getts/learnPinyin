@@ -128,9 +128,8 @@ Page({
     });
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
+
+  // 生命周期函数--监听页面加载
   onLoad: function (options) {
     this.generate();
   },
@@ -140,6 +139,13 @@ Page({
       letterOrWord: !this.data.letterOrWord
     })
 
+
+  },
+
+  getmore() {
+    wx.navigateTo({
+      url: '/pages/more/more' + '?word=好',
+    });
 
   }
 })
