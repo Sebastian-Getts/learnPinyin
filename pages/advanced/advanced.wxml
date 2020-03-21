@@ -1,17 +1,17 @@
-<!-- <view class="container"> -->
 <view wx:if="{{letterOrWord}}" class="screen" style="background: {{bingo==true?'rgb(65, 60, 60)':''}}">
   <view class="singleLetter" wx:key="{{index}}" wx:for="{{exam}}" style="color:{{item.value==true?'white':'black'}};background:{{item.value==true? 'rgb(65, 60, 60)':'rgb(129, 123, 122)'}} ">
     {{item.name}}
   </view>
 </view>
 <view wx:else class="screenChalenge">
-  <view class="singleWord" wx:key="{{index}}" wx:for="{{challenge}}" style="color:{{item.value==true?'white':'black'}};background:{{item.value==true? 'rgb(65, 60, 60)':'rgb(129, 123, 122)'}} ">
+  <view class="singleWord" wx:key="{{index}}" wx:for="{{challenge}}" wx:if="{{index==0}}" style="color:{{item.value==true?'white':'black'}};background:{{item.value==true? 'rgb(65, 60, 60)':'rgb(129, 123, 122)'}} ">
     <view class="word">{{item.word}}</view>
-    <view class="pinyin">{{item.pinyin}}</view>
+    <view wx:if="{{tips}}" class="pinyin">{{item.pinyin}}</view>
+    <view wx:else class="testPinyin">
+      <view class="singleTestLetter" wx:for="{{singlePinyin}}" wx:key="index">{{item.name}}</view>
+    </view>
   </view>
-  <view class="more" bindtap="getmore">
-    >>更多
-  </view>
+  <view class="more" bindtap="getmore">>>更多</view>
 </view>
 <view class="midControll">
   <view class="changebtn" bindtap="changekbor">
@@ -24,12 +24,12 @@
 </view>
 <view class="keyboard2" wx:if='{{showOrNot}}'>
   <view class="firstline">
-    <view class="twentysixbtn" wx:for="{{qwe}}" wx:key="index" bindtap="boardbtn" id="{{item}}">
+    <view class="twentysixbtn" wx:for="{{qwe}}" wx:key="index" bindtap="{{letterOrWord==true? 'boardbtn':'challengeBoard'}}" id="{{item}}">
       {{item}}
     </view>
   </view>
   <view class="firstline">
-    <view class="twentysixbtn" wx:for="{{asd}}" wx:key="index" bindtap="boardbtn" id="{{item}}">
+    <view class="twentysixbtn" wx:for="{{asd}}" wx:key="index" bindtap="{{letterOrWord==true? 'boardbtn':'challengeBoard'}}" id="{{item}}">
       {{item}}
     </view>
   </view>
@@ -37,7 +37,7 @@
     <view class="cap" bindtap="test">
       <image src="/utils/images/shengmu/cap.png"></image>
     </view>
-    <view class="twentysixbtn" wx:for="{{zxc}}" wx:key="index" bindtap="boardbtn" id="{{item}}">
+    <view class="twentysixbtn" wx:for="{{zxc}}" wx:key="index" bindtap="{{letterOrWord==true? 'boardbtn':'challengeBoard'}}" id="{{item}}">
       {{item}}
     </view>
     <view class="cap" bindtap="test">
@@ -51,10 +51,9 @@
     <view class="check2" bindtap="test">确 认</view>
   </view>
 </view>
-<view class="keyborad" wx:else>
-  <view wx:key="{{index}}" wx:for="{{list}}" class="boardbtn" bindtap="boardbtn" id="{{item}}">
+<view class="keyboard" wx:else>
+  <view wx:key="{{index}}" wx:for="{{list}}" class="boardbtn" bindtap="{{letterOrWord==true? 'boardbtn':'challengeBoard'}}" id="{{item}}">
     {{item}}
   </view>
   <view class="boardbtn" bindtap="blankbtn" style="width:500rpx">空格</view>
 </view>
-<!-- </view> -->

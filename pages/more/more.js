@@ -1,53 +1,43 @@
+import { request } from "../../utils/request";
+import { showToast } from "../../utils/asyncwx";
+
 // pages/more/more.js
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
+    history_dispaly: false,
+    history_list: []
 
   },
 
-  //生命周期函数--监听页面加载
   onLoad: function (options) {
     const { word } = options;
-    // this.getXinhua(word);
+    this.getXinhua(word);
   },
 
-  getXinhua(word) {
-    wx.request({
-      url: 'https://v.juhe.cn/xhzd/query?word=' + word + '&key=',
-      success: (res) => {
-        console.log(res.data);
-        const { result } = res.data;
-        const { bihua, bushou, jijie, pinyin } = result;
-        this.setData({
-          bihua,
-          bushou,
-          jijie,
-          pinyin,
-          word
-        })
-      },
-      fail: (e) => { console.log(e) },
-    });
-
+  async getXinhua(word) {
+    const { result } = await request({ url: 'juhe/dictionary/' + word, method: 'GET' })
+    const { bihua, bushou, jijie, pinyin, zi } = result;
+    this.setData({
+      bihua,
+      bushou,
+      jijie,
+      pinyin,
+      zi
+    })
   },
-  gethistory() {
-    var reqTask = wx.request({
-      url: '',
-      data: {},
-      header: {'content-type':'application/json'},
-      method: 'GET',
-      dataType: 'json',
-      responseType: 'text',
-      success: (result) => {
-        
-      },
-      fail: () => {},
-      complete: () => {}
-    });
-      
-  }
+  async gethistory() {
+    const now = new Date();
+    const month = now.getMonth() + 1;
+    const day = now.getDate();
+    console.log('========month:' + month + ', ' + day);
+    const { result } = await request({ url: 'juhe/history/' + month + '/' + day, method: 'GET' });
+    console.log(result);
+    const history_dispaly = !this.history_dispaly;
+    this.setData({
+      history_list: result,
+      history_dispaly: history_dispaly
+    })
+  },
 
 })

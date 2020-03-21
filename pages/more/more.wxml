@@ -1,6 +1,6 @@
 <view class="wordCard">
     <view class="word_wrap">
-        <view class="word">{{word}}</view>
+        <view class="word">{{zi}}</view>
         <view class="pinyin">{{pinyin}}</view>
     </view>
     <view class="jijie">
@@ -8,9 +8,12 @@
         <view class="jijie_item" wx:for="{{jijie}}" wx:key="index">{{item}}</view>
     </view>
 </view>
-
 <view class="history">
-    <view class="history_btn" bindtap="gethistory">
-        你知道吗？ 历史上的今天 >>
+    <view class="history_btn" bindtap="gethistory">你知道吗？ 历史上的今天 >></view>
+    <view wx:if="{{history_dispaly}}" class="history_content">
+        <view class="his_content_wrap" wx:for="{{history_list}}" wx:key="id">
+            <view class="des">{{item.des}}</view>
+            <image mode="widthFix" wx:if="{{item.pic!=''}}" src="{{item.pic}}" />
+        </view>
     </view>
 </view>

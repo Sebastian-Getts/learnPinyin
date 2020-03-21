@@ -3,8 +3,6 @@
     "pages/basic/basic",
     "pages/advanced/advanced",
     "pages/about/about",
-    "pages/index/index",
-    "pages/logs/logs",
     "pages/more/more"
   ],
   "window": {

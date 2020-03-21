@@ -20,24 +20,44 @@ page {
 }
 .wordCard .word_wrap .pinyin {
   display: flex;
-  font-size: 40rpx;
+  font-size: 60rpx;
 }
 .wordCard .jijie {
   margin: 10rpx 0;
 }
 .wordCard .jijie .jijie_item {
-  margin: 6rpx 10rpx;
+  margin: 10rpx;
 }
 .history {
   display: flex;
   flex-direction: column;
   margin: 10rpx;
+  background: linear-gradient(120deg, #726e60, #d1c736);
 }
 .history .history_btn {
   height: 70rpx;
   width: 80%;
   display: flex;
-  align-items: center;
-  background: linear-gradient(120deg, #607080, #4996df);
   text-indent: 1em;
+  font-size: 40rpx;
+  align-items: center;
+}
+.history .history_content {
+  display: flex;
+  flex-direction: column;
+}
+.history .history_content .his_content_wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.history .history_content .his_content_wrap .des {
+  font-size: 30rpx;
+  text-indent: 2em;
+  margin: 10rpx;
+  padding: 10rpx;
+}
+.history .history_content .his_content_wrap image {
+  margin-bottom: 6rpx;
 }

@@ -22,7 +22,7 @@ page {
 
         .pinyin {
             display  : flex;
-            font-size: 40rpx;
+            font-size: 60rpx;
         }
     }
 
@@ -30,7 +30,7 @@ page {
         margin: 10rpx 0;
 
         .jijie_item {
-            margin: 6rpx 10rpx;
+            margin: 10rpx;
         }
     }
 }
@@ -39,13 +39,38 @@ page {
     display       : flex;
     flex-direction: column;
     margin        : 10rpx;
+    background    : linear-gradient(120deg, rgb(114, 110, 96), rgb(209, 199, 54));
 
     .history_btn {
         height     : 70rpx;
         width      : 80%;
         display    : flex;
-        align-items: center;
-        background : linear-gradient(120deg, rgb(96, 112, 128), rgb(73, 150, 223));
         text-indent: 1em;
+        font-size  : 40rpx;
+        align-items: center;
+    }
+
+    .history_content {
+        display       : flex;
+        flex-direction: column;
+
+        .his_content_wrap {
+            display        : flex;
+            align-items    : center;
+            justify-content: center;
+            flex-direction : column;
+
+            .des {
+                font-size  : 30rpx;
+                text-indent: 2em;
+                margin     : 10rpx;
+                padding    : 10rpx;
+            }
+
+            image {
+                margin-bottom: 6rpx;
+            }
+        }
+
     }
 }

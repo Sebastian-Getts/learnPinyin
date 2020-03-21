@@ -1,9 +1,8 @@
-// pages/shengmu/shengmu.js
+import { request } from "../../utils/request";
+import { showToast } from "../../utils/asyncwx";
 Page({
 
-  /**
-   * 页面的初始数据
-   */
+
   data: {
     list: [",/。", "ABC", "DEF", "GHI", "JKL", "MNO", "PQRS", "TUV", "WXYZ"],
     list2: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"],
@@ -13,7 +12,9 @@ Page({
     exam: [],
     bingo: false,
     letterOrWord: true,
-    challenge: [{ word: '好', pinyin: 'hao', value: false }]
+    tips: false,
+    challenge: [],
+    singlePinyin: []
   },
 
   boardbtn(e) {
@@ -115,37 +116,79 @@ Page({
       })
     }
   },
+
   changekbor() {
     this.setData({
       showOrNot: !this.data.showOrNot
     })
   },
 
-  test() {
-    wx.showToast({
-      title: '功能开发中~',
-      icon: 'none',
-    });
+  async test() {
+    await showToast({ title: '功能开发中~' });
   },
 
 
-  // 生命周期函数--监听页面加载
   onLoad: function (options) {
     this.generate();
   },
 
-  changeScreen() {
+  async changeScreen() {
+    let { letterOrWord, challenge } = this.data;
+    if (letterOrWord && (challenge.length == 0)) {
+      this.getNewWord();
+    }
     this.setData({
       letterOrWord: !this.data.letterOrWord
     })
+  },
 
-
+  async getNewWord() {
+    const { wordList } = await request({ url: "pickOne/word/5", method: "GET" });
+    const theWord = wordList[0].pinyin;
+    const array = theWord.split('');
+    let singlePinyin = [];
+    array.forEach(element => singlePinyin.push({
+      name: element,
+      flag: false
+    }));
+    console.log(singlePinyin[0]);
+    this.setData({
+      challenge: wordList,
+      singlePinyin: singlePinyin
+    })
   },
 
   getmore() {
-    wx.navigateTo({
-      url: '/pages/more/more' + '?word=好',
-    });
+    // const map = this.data.challenge[0];
+    // const { encode } = map;
+    // wx.navigateTo({
+    //   url: '/pages/more/more' + '?word=' + encode,
+    // });
+    let { challenge } = this.data;
+    challenge.splice(0, 1);
+    this.setData({
+      challenge
+    })
+  },
 
+  challengeBoard(e) {
+    console.log('challenge board...');
+    let v = e.target.id;
+    v = v.toUpperCase();
+    const exam = this.data.challenge[0].pinyin;
+    console.log(exam);
+    // var target;
+    // var i = 0;
+    // let flag = false;
+    // //获取screen目标元素
+    // for (i; i < exam.length; i++) {
+    //   if (exam[i].value == false) {
+    //     target = exam[i].name;
+    //     if (i == (exam.length - 1)) {
+    //       flag = true;
+    //     }
+    //     break;
+    //   }
+    // }
   }
 })

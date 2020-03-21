@@ -7,7 +7,7 @@ page {
   flex-direction: column;
 }
 
-.keyborad {
+.keyboard {
   display        : flex;
   flex-flow      : row wrap;
   justify-content: space-around;
@@ -73,11 +73,15 @@ page {
   margin-right: 20rpx;
 }
 
+.screenChalenge .more:active {
+  color: rgb(0, 132, 255);
+}
+
 .singleWord {
   display       : flex;
   flex-direction: column;
   align-items   : center;
-  height: 80%;
+  height        : 80%;
 }
 
 .singleWord .word {
@@ -89,10 +93,27 @@ page {
 }
 
 .singleWord .pinyin {
-  line-height  : 136rpx;
-  border-radius: 170rpx;
-  display      : flex;
-  font-size    : 50rpx;
+  line-height     : 136rpx;
+  border-radius   : 170rpx;
+  display         : flex;
+  font-size       : 50rpx;
+  width           : 50%;
+  height          : 90rx;
+  align-items     : center;
+  justify-content : center;
+  background-color: cornflowerblue;
+}
+
+.singleWord .testPinyin {
+  line-height     : 136rpx;
+  border-radius   : 170rpx;
+  display         : flex;
+  font-size       : 50rpx;
+  width           : 58%;
+  height          : 90rx;
+  align-items     : center;
+  justify-content : space-around;
+  background-color: rgb(89, 100, 128);
 }
 
 .midControll {

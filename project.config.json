@@ -9,8 +9,17 @@
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
+		"coverView": true,
 		"autoAudits": false,
-		"coverView": true
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		},
+		"enhance": true
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.10.3",
@@ -51,6 +60,13 @@
 					"name": "more",
 					"pathName": "pages/more/more",
 					"query": "word=好",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "advanced",
+					"pathName": "pages/advanced/advanced",
+					"query": "",
 					"scene": null
 				}
 			]
