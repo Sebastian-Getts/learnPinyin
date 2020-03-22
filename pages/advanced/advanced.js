@@ -13,7 +13,8 @@ Page({
     bingo: false,
     letterOrWord: true,
     tips: false,
-    challenge: [],
+    testSuccess: false,
+    wordList: [],
     singlePinyin: []
   },
 
@@ -133,8 +134,8 @@ Page({
   },
 
   async changeScreen() {
-    let { letterOrWord, challenge } = this.data;
-    if (letterOrWord && (challenge.length == 0)) {
+    let { letterOrWord, wordList } = this.data;
+    if (letterOrWord && (wordList.length == 0)) {
       this.getNewWord();
     }
     this.setData({
@@ -144,6 +145,11 @@ Page({
 
   async getNewWord() {
     const { wordList } = await request({ url: "pickOne/word/5", method: "GET" });
+    this.nextWord_help(wordList);
+  },
+
+  //change target test group
+  nextWord_help(wordList) {
     const theWord = wordList[0].pinyin;
     const array = theWord.split('');
     let singlePinyin = [];
@@ -151,44 +157,79 @@ Page({
       name: element,
       flag: false
     }));
-    console.log(singlePinyin[0]);
+    let { testSuccess } = this.data;
+    testSuccess = false;
     this.setData({
-      challenge: wordList,
-      singlePinyin: singlePinyin
+      wordList,
+      singlePinyin,
+      testSuccess
     })
+    wx.setStorageSync("word_detail", []);
+
+  },
+
+  async nextWord() {
+    let { wordList } = this.data;
+    console.log(wordList.length);
+    if (wordList.length == 1) {
+      this.getNewWord();
+    } else {
+      wordList.splice(0, 1);
+      this.nextWord_help(wordList);
+    }
+
   },
 
   getmore() {
-    // const map = this.data.challenge[0];
-    // const { encode } = map;
-    // wx.navigateTo({
-    //   url: '/pages/more/more' + '?word=' + encode,
-    // });
-    let { challenge } = this.data;
-    challenge.splice(0, 1);
-    this.setData({
-      challenge
-    })
+    const map = this.data.wordList[0];
+    const { encode } = map;
+    wx.navigateTo({
+      url: '/pages/more/more' + '?word=' + encode,
+    });
   },
 
-  challengeBoard(e) {
-    console.log('challenge board...');
+  async challengeBoard(e) {
+    // 获取键盘的字母。
     let v = e.target.id;
-    v = v.toUpperCase();
-    const exam = this.data.challenge[0].pinyin;
-    console.log(exam);
-    // var target;
-    // var i = 0;
-    // let flag = false;
+    v = v.toLowerCase();
+    const test = this.data.singlePinyin;
+    let target = '';
+    let i = 0;
     // //获取screen目标元素
-    // for (i; i < exam.length; i++) {
-    //   if (exam[i].value == false) {
-    //     target = exam[i].name;
-    //     if (i == (exam.length - 1)) {
-    //       flag = true;
-    //     }
-    //     break;
-    //   }
-    // }
+    for (; i < test.length; i++) {
+      if (test[i].flag == false) {
+        target = test[i].name;
+        break;
+      }
+    }
+
+    //匹配按键字母
+    for (var j = 0; j < v.length; j++) {
+      if (v[j] == target) {
+        test[i].flag = true; //更改判断标识
+        if (i == test.length - 1) {
+          await showToast({ title: '正确啦，很厉害哦~' });
+          this.setData({
+            singlePinyin: test,
+            testSuccess: true
+          });
+        } else {
+          this.setData({
+            singlePinyin: test,
+          });
+        }
+
+        break;
+      }
+    }
+
+    if (target == '') {
+      await showToast({ title: '全部正确了哦~' });
+    }
+
+  },
+
+  async getTips() {
+    await showToast({ title: '功能开发中~' });
   }
 })

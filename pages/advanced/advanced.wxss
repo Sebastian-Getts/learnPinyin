@@ -98,22 +98,29 @@ page {
   display         : flex;
   font-size       : 50rpx;
   width           : 50%;
-  height          : 90rx;
+  height          : 130rpx;
   align-items     : center;
   justify-content : center;
   background-color: cornflowerblue;
 }
 
 .singleWord .testPinyin {
-  line-height     : 136rpx;
-  border-radius   : 170rpx;
-  display         : flex;
-  font-size       : 50rpx;
-  width           : 58%;
-  height          : 90rx;
-  align-items     : center;
-  justify-content : space-around;
-  background-color: rgb(89, 100, 128);
+  /* line-height     : 136rpx; */
+  border-radius      : 170rpx;
+  display            : flex;
+  font-size          : 60rpx;
+  width              : 80%;
+  align-items        : center;
+  justify-content    : space-around;
+  background-color   : rgb(89, 100, 128);
+}
+
+.singleWord .testPinyin .singleTestLetter {
+  height     : 66%;
+  padding    : 4rpx;
+  display    : flex;
+  align-items: center;
+  color      : rgb(89, 100, 128);
 }
 
 .midControll {
@@ -139,6 +146,7 @@ page {
 .changebtn:active {
   background: rgb(97, 63, 95);
 }
+
 
 .keyboard2 {
   display       : flex;
