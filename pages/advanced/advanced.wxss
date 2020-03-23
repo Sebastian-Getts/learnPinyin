@@ -1,5 +1,5 @@
 page {
-  background: rgba(134, 224, 126, 0.808);
+  background: rgba(126, 224, 175, 0.808);
 }
 
 .container {
@@ -11,7 +11,7 @@ page {
   display        : flex;
   flex-flow      : row wrap;
   justify-content: space-around;
-  background     : rgb(62, 63, 56);
+  background     : rgb(73, 68, 71);
   width          : 100%;
   bottom         : 0;
   position       : fixed;
@@ -29,7 +29,8 @@ page {
 }
 
 .boardbtn:active {
-  background: rgb(158, 145, 231);
+  background: rgb(92, 75, 58);
+  color: aliceblue;
 }
 
 .screen {
@@ -132,19 +133,19 @@ page {
 }
 
 .changebtn {
-  background     : linear-gradient(120deg, rgb(46, 78, 46), rgb(71, 172, 96));
+  background     : linear-gradient(120deg, rgb(78, 46, 61), rgb(154, 172, 71));
   border         : 2rpx solid grey;
   border-radius  : 70rpx;
   display        : flex;
-  width          : 120rpx;
-  height         : 120rpx;
+  width          : 140rpx;
+  height         : 140rpx;
   align-items    : center;
   justify-content: center;
 
 }
 
 .changebtn:active {
-  background: rgb(97, 63, 95);
+  background: rgb(86, 97, 102);
 }
 
 
@@ -249,14 +250,17 @@ page {
 
 .keyboard2 .firstline view:active,
 .keyboard2 .lastline .boardbtn2:active {
-  background: rgb(88, 88, 87);
+  background: rgb(92, 75, 58);
+  color: aliceblue;
 }
 
 .keyboard2 .firstline .cap:active,
 .keyboard2 .lastline .check:active {
-  background: rgb(184, 184, 181);
+  background: rgb(92, 75, 58);
+  color: aliceblue;
 }
 
 .keyboard2 .lastline .check2:active {
-  background: rgb(88, 134, 233);
+  background: rgb(92, 75, 58);
+  color: aliceblue;
 }

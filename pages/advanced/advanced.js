@@ -134,13 +134,17 @@ Page({
   },
 
   async changeScreen() {
-    let { letterOrWord, wordList } = this.data;
-    if (letterOrWord && (wordList.length == 0)) {
-      this.getNewWord();
+    try {
+      let { letterOrWord, wordList } = this.data;
+      if (letterOrWord && (wordList.length == 0)) {
+        this.getNewWord();
+      }
+      this.setData({
+        letterOrWord: !this.data.letterOrWord
+      })
+    } catch (error) {
+      await showToast({ title: error });
     }
-    this.setData({
-      letterOrWord: !this.data.letterOrWord
-    })
   },
 
   async getNewWord() {
@@ -208,7 +212,13 @@ Page({
       if (v[j] == target) {
         test[i].flag = true; //更改判断标识
         if (i == test.length - 1) {
-          await showToast({ title: '正确啦，很厉害哦~' });
+          setTimeout(function () {
+            wx.showToast({
+              title: '正确啦，很厉害哦~',
+              icon: 'none'
+            });
+          }, 200); //延迟时间 这里是1秒
+
           this.setData({
             singlePinyin: test,
             testSuccess: true
@@ -231,5 +241,16 @@ Page({
 
   async getTips() {
     await showToast({ title: '功能开发中~' });
+  },
+
+  async challengeBlank() {
+    const { singlePinyin } = this.data;
+    let hereFlag = false;
+    singlePinyin.forEach(v => v.flag == false ? hereFlag = false : hereFlag = true);
+    if (!hereFlag) {
+      await showToast({ title: '要按字母哦~' });
+    } else {
+      this.nextWord();
+    }
   }
 })

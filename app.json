@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/basic/basic",
     "pages/advanced/advanced",
+    "pages/basic/basic",
     "pages/about/about",
     "pages/more/more"
   ],

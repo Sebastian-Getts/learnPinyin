@@ -28,7 +28,7 @@
   <view class="changebtn" bindtap="getTips" style="visibility: {{letterOrWord==false? 'none':'hidden'}}">
     <p>提示</p>
   </view>
-  <view class="changebtn" bindtap="changeScreen" style="background: {{letterOrWord==false?'linear-gradient(120deg, rgb(46, 78, 73), rgb(71, 132, 172)':'linear-gradient(120deg, rgb(46, 78, 46), rgb(71, 172, 96))'}}">
+  <view class="changebtn" bindtap="changeScreen" style="background:{{letterOrWord==false?'linear-gradient(120deg,rgb(154, 172, 71), rgb(67, 76, 80))':'linear-gradient(120deg, rgb(78, 46, 61), rgb(154, 172, 71))'}}">
     <p>挑战</p>
   </view>
 </view>
@@ -57,7 +57,7 @@
   <view class="lastline">
     <view class="check" bindtap="test">123</view>
     <view class="check" bindtap="test">^-^</view>
-    <view class="boardbtn2" bindtap="blankbtn">空 格</view>
+    <view class="boardbtn2" bindtap="{{letterOrWord==true?  'blankbtn':'challengeBlank'}}">空 格</view>
     <view class="check2" bindtap="test">确 认</view>
   </view>
 </view>
@@ -65,5 +65,5 @@
   <view wx:key="{{index}}" wx:for="{{list}}" class="boardbtn" bindtap="{{letterOrWord==true? 'boardbtn':'challengeBoard'}}" id="{{item}}">
     {{item}}
   </view>
-  <view class="boardbtn" bindtap="blankbtn" style="width:500rpx">空格</view>
+  <view class="boardbtn" bindtap="{{letterOrWord==true?  'blankbtn':'challengeBlank'}}" style="width:500rpx">空格</view>
 </view>
