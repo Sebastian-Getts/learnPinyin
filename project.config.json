@@ -68,6 +68,13 @@
 					"pathName": "pages/advanced/advanced",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "profile",
+					"pathName": "pages/profile/profile",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

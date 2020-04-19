@@ -1,0 +1,68 @@
+page {
+    background-color: #cccccc;
+}
+
+.user_info_wrap {
+    background: #5f9ea0;
+    display   : flex;
+
+    .login_wrap {
+        display    : flex;
+        align-items: center;
+        height     : 200rpx;
+
+        .user_icon {
+            border-radius: 50%;
+            overflow     : hidden;
+            width        : 26%;
+            margin       : auto 30rpx;
+        }
+
+        .user_name {
+            font-size: 40rpx;
+        }
+    }
+}
+
+.content_wrap {
+    display        : flex;
+    flex-direction : column;
+    background     : #cccccc;
+    height         : 670rpx;
+    justify-content: space-around;
+    margin         : 40rpx 10rpx;
+
+    .sub_wrap {
+        display        : flex;
+        background     : white;
+        font-size      : 32rpx;
+        align-items    : center;
+        border         : 1rpx solid #cccccc;
+        margin-bottom  : 40rpx;
+        justify-content: space-between;
+
+        .icon_wrap {
+            display    : flex;
+            align-items: center;
+
+            view {
+                margin: 30rpx 20rpx;
+            }
+
+            button {
+                background-color: #ffffff;
+                display         : flex;
+                padding-left    : 5px;
+                color           : black;
+                font-weight     : 400;
+            }
+        }
+
+        .arrow {
+            margin-right: 30rpx;
+            color       : #4b4a4a;
+        }
+    }
+
+
+}

@@ -1,0 +1,45 @@
+<view class="user_info_wrap">
+    <view class="login_wrap">
+        <view class="user_icon">
+            <open-data type="userAvatarUrl"></open-data>
+        </view>
+        <open-data class="user_name" type="userNickName"></open-data>
+    </view>
+</view>
+<view class="content_wrap">
+    <view class="sub_wrap" bindtap="shoucang">
+        <view class="icon_wrap">
+            <view class="iconfont icon-shoucang"></view>
+            <text>我的收藏</text>
+        </view>
+        <view class="arrow">>></view>
+    </view>
+    <view class="sub_wrap" bindtap="shichang">
+        <view class="icon_wrap">
+            <view class="iconfont icon-zhuantishenhedan-jiemushichang"></view>
+            <text>学习时长</text>
+        </view>
+        <view class="arrow">>></view>
+    </view>
+    <view class="sub_wrap" bindtap="shuoming">
+        <view class="icon_wrap">
+            <view class="iconfont icon-shiyongshuoming"></view>
+            <text>使用说明</text>
+        </view>
+        <view class="arrow">>></view>
+    </view>
+    <view class="sub_wrap">
+        <view class="icon_wrap">
+            <view class="iconfont icon-yijianfankui"></view>
+            <button open-type='feedback' type='default'>意见反馈</button>
+        </view>
+        <view class="arrow">>></view>
+    </view>
+    <view class="sub_wrap">
+        <view class="icon_wrap">
+            <view class="iconfont icon-banben"></view>
+            <text>当前版本</text>
+        </view>
+        <view class="arrow">1.4.1</view>
+    </view>
+</view>

@@ -63,7 +63,7 @@ Page({
               that.blankbtn();
             }, 1000)
           }
-          break;
+          return;
         }
       }
     }
