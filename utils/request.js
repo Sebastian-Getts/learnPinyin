@@ -1,3 +1,4 @@
+const app = getApp();
 let ajaxTimes = 0;
 export const request = (params) => {
     ajaxTimes++;
@@ -7,16 +8,17 @@ export const request = (params) => {
 
     });
 
-    const baseUrl = "https://www.venezza.top/learnPinyin/";
+    const { base_url } = app.globalData;
     return new Promise((resolve, reject) => {
         wx.request({
             ...params,
-            url: baseUrl + params.url,
+            url: base_url + params.url,
             success: (res) => {
+                console.log(res);
                 if (res.data.code == 200) {
                     resolve(res.data.data);
                 } else {
-                    reject(res.message);
+                    reject(res.data.message);
                 }
 
             },

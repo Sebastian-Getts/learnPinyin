@@ -1,10 +1,12 @@
 {
   "pages": [
-    "pages/advanced/advanced",
     "pages/basic/basic",
+    "pages/advanced/advanced",
+    "pages/collection/collection",
     "pages/about/about",
     "pages/more/more",
-    "pages/profile/profile"
+    "pages/profile/profile",
+    "pages/test/test"
   ],
   "window": {
     "backgroundTextStyle": "light",

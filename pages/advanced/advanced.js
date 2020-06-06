@@ -1,5 +1,7 @@
 import { request } from "../../utils/request";
-import { showToast } from "../../utils/asyncwx";
+import { login, showToast, showModal } from "../../utils/asyncwx";
+import { requestPro } from "../../utils/requestPro";
+const app = getApp();
 Page({
 
 
@@ -15,7 +17,8 @@ Page({
     tips: false,
     testSuccess: false,
     wordList: [],
-    singlePinyin: []
+    singlePinyin: [],
+    openId: ''
   },
 
   boardbtn(e) {
@@ -128,11 +131,18 @@ Page({
     await showToast({ title: '功能开发中~' });
   },
 
-
   onLoad: function (options) {
     this.generate();
+    this.getUserBasicInfo();
   },
 
+  getUserBasicInfo() {
+    const openId = wx.getStorageSync("openid");
+    this.setData({
+      openId
+    })
+
+  },
   async changeScreen() {
     try {
       let { letterOrWord, wordList } = this.data;
@@ -239,8 +249,16 @@ Page({
 
   },
 
-  async getTips() {
-    await showToast({ title: '功能开发中~' });
+  async collect() {
+    try {
+      let word_collection = this.data.wordList[0];
+      const { openId } = this.data;
+      word_collection = { ...word_collection, openId };
+      const res = await request({ url: 'collect/word', method: 'POST', data: word_collection });
+      await showToast({ title: res });
+    } catch (error) {
+      await showModal({ content: error });
+    }
   },
 
   async challengeBlank() {

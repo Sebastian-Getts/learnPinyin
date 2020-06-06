@@ -1,0 +1,8 @@
+<view class="collection_page">
+    <view class="word_list_wrap" wx:for="{{word_list}}" wx:key="index">
+        <view class="single_word_wrap">
+            <view class="word">{{item.word}}</view>
+            <view class="phonetic">{{item.phonetic}}</view>
+        </view>
+    </view>
+</view>

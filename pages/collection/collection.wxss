@@ -1,0 +1,31 @@
+page {
+  background: mistyrose;
+}
+.collection_page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.collection_page .word_list_wrap {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  height: 70rpx;
+  justify-content: center;
+  margin: 10rpx 0;
+  border-bottom: 1rpx dotted #cccccc;
+}
+.collection_page .word_list_wrap .single_word_wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.collection_page .word_list_wrap .single_word_wrap .word {
+  font-size: 32rpx;
+  font-weight: 600;
+}
+.collection_page .word_list_wrap .single_word_wrap .phonetic {
+  font-size: 28rpx;
+  color: steelblue;
+}

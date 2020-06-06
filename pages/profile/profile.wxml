@@ -12,7 +12,7 @@
             <view class="iconfont icon-shoucang"></view>
             <text>我的收藏</text>
         </view>
-        <view class="arrow">>></view>
+        <view class="arrow">{{collection_number}} >></view>
     </view>
     <view class="sub_wrap" bindtap="shichang">
         <view class="icon_wrap">
@@ -40,6 +40,6 @@
             <view class="iconfont icon-banben"></view>
             <text>当前版本</text>
         </view>
-        <view class="arrow">1.4.1</view>
+        <view class="arrow">1.5.0</view>
     </view>
 </view>

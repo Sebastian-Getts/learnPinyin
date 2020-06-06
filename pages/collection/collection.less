@@ -1,0 +1,35 @@
+page {
+    background: mistyrose;
+}
+
+.collection_page {
+    display        : flex;
+    flex-direction : column;
+    align-items    : center;
+    justify-content: center;
+
+    .word_list_wrap {
+        width          : 90%;
+        display        : flex;
+        flex-direction : column;
+        height         : 70rpx;
+        justify-content: center;
+        margin         : 10rpx 0;
+        border-bottom  : 1rpx dotted #cccccc;
+        .single_word_wrap {
+            display        : flex;
+            align-items    : center;
+            justify-content: space-between;
+
+            .word {
+                font-size  : 32rpx;
+                font-weight: 600;
+            }
+
+            .phonetic {
+                font-size: 28rpx;
+                color    : steelblue;
+            }
+        }
+    }
+}

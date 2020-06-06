@@ -1,6 +1,5 @@
-//app.js
 App({
-  onLaunch: function() {
+  async onLaunch() {
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
@@ -9,8 +8,18 @@ App({
     // 登录
     wx.login({
       success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        // console.log(res.code);s
+        const { base_url } = this.globalData;
+        const { code } = res;
+        wx.request({
+          url: base_url + 'wx/userInfo/' + code,
+          header: { 'content-type': 'application/json' },
+          method: 'GET',
+          dataType: 'json',
+          success: (result) => {
+            wx.setStorageSync("openid", result.data.data.openid);
+          },
+          fail: (err) => { console.log(err) },
+        });
       }
     })
     // 获取用户信息
@@ -35,6 +44,7 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    base_url: 'https://www.venezza.top/learnPinyin/',
+    // base_url: 'http://localhost:8001/learnPinyin/',
   }
 })

@@ -15,7 +15,10 @@ Page({
   },
 
   async shoucang() {
-    showToast({ title: '开发中~' });
+    wx.navigateTo({
+      url: '/pages/collection/collection'
+    });
+
   },
 
   async shichang() {
