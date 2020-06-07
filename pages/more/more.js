@@ -1,5 +1,5 @@
 import { request } from "../../utils/request";
-import { showToast } from "../../utils/asyncwx";
+import { showToast, showModal } from "../../utils/asyncwx";
 
 Page({
 
@@ -10,17 +10,19 @@ Page({
   },
 
   onLoad: function (options) {
-    const { word } = options;
-    this.getXinhua(word);
+    const { encode } = options;
+    console.log(encode);
+    this.getXinhua(encode);
   },
 
-  async getXinhua(word) {
+  async getXinhua(encode) {
     try {
       let word_detail = wx.getStorageSync("word_detail") || [];
-      if (word_detail.length == 0) {
-        const { result } = await request({ url: 'juhe/dictionary/' + word, method: 'GET' })
-        word_detail = result;
-        wx.setStorageSync("word_detail", result);
+      console.log(word_detail);
+      if (word_detail.length == 0 || word_detail.encode != encode) {
+        const { result } = await request({ url: 'juhe/dictionary/' + encode, method: 'GET' })
+        word_detail = { ...result, encode };
+        wx.setStorageSync("word_detail", word_detail);
       }
       const { bihua, bushou, jijie, pinyin, zi } = word_detail;
       this.setData({
@@ -31,7 +33,7 @@ Page({
         zi
       })
     } catch (error) {
-      await showToast({ title: error });
+      await showModal({ content: error.toString() });
     }
   },
 

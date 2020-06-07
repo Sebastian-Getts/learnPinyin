@@ -1,8 +1,13 @@
 <view class="collection_page">
+    <!-- <view class="panel_wrap">
+        <view class="total">总计：{{word_list.length}}</view>
+        <view class="deleteAll" bindtap="deleteAll">清空</view>
+    </view> -->
     <view class="word_list_wrap" wx:for="{{word_list}}" wx:key="index">
-        <view class="single_word_wrap">
+        <view class="single_word_wrap" id='{{item.encode}}' bindtap="getMore">
             <view class="word">{{item.word}}</view>
             <view class="phonetic">{{item.phonetic}}</view>
         </view>
     </view>
+    <view class="empty_list" wx:if="{{word_list.length==0}}">您没有收藏的文字，快去收藏吧！</view>
 </view>

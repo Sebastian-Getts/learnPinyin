@@ -8,14 +8,42 @@ page {
     align-items    : center;
     justify-content: center;
 
+    .panel_wrap {
+        background: seashell;
+        display   : flex;
+        width     : 94%;
+
+        .total {
+            font-size: 26rpx;
+            margin   : 0 20rpx;
+        }
+
+        .deleteAll {
+            height         : 40rpx;
+            width          : 140rpx;
+            display        : flex;
+            align-items    : center;
+            justify-content: center;
+            border-radius  : 24rpx;
+            overflow       : hidden;
+            background     : silver;
+        }
+
+        .deleteAll:active {
+            background: rgb(116, 116, 116);
+            color     : white;
+        }
+    }
+
     .word_list_wrap {
-        width          : 90%;
+        width          : 94%;
         display        : flex;
         flex-direction : column;
         height         : 70rpx;
         justify-content: center;
         margin         : 10rpx 0;
         border-bottom  : 1rpx dotted #cccccc;
+
         .single_word_wrap {
             display        : flex;
             align-items    : center;
@@ -31,5 +59,11 @@ page {
                 color    : steelblue;
             }
         }
+    }
+
+    .empty_list {
+        margin-top: 40rpx;
+        color     : #858585;
+        font-size : 30rpx;
     }
 }

@@ -1,4 +1,5 @@
 import { request } from "../../utils/request";
+import { showToast } from "../../utils/asyncwx";
 const { getRandomStrAndNum } = require('../../utils/commonUtil.js');
 Page({
 
@@ -17,12 +18,25 @@ Page({
   },
 
   async getUserWordList() {
-    const openId = wx.getStorageSync("openid");
-    console.log(openId);
-    const word_list = await request({ url: 'collect/wordList', method: 'POST', data: { openId } });
+    const openid = wx.getStorageSync("openid");
+    const word_list = await request({ url: 'collect/wordList', method: 'POST', data: { openid } });
     this.setData({
       word_list
     })
-  }
+  },
+
+  async deleteAll() {
+    const openid = wx.getStorageSync("openid");
+    const res = await request({ url: 'collect/wordMinusAll', method: 'POST', data: { openid } });
+    await showToast({ title: res });
+    this.onLoad();
+  },
+
+  getMore(e) {
+    const  encode  = e.target.id;
+    wx.navigateTo({
+      url: '/pages/more/more' + '?encode=' + encode,
+    });
+  },
 
 })

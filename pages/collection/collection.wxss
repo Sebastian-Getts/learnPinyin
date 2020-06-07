@@ -7,8 +7,31 @@ page {
   align-items: center;
   justify-content: center;
 }
+.collection_page .panel_wrap {
+  background: seashell;
+  display: flex;
+  width: 94%;
+}
+.collection_page .panel_wrap .total {
+  font-size: 26rpx;
+  margin: 0 20rpx;
+}
+.collection_page .panel_wrap .deleteAll {
+  height: 40rpx;
+  width: 140rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 24rpx;
+  overflow: hidden;
+  background: silver;
+}
+.collection_page .panel_wrap .deleteAll:active {
+  background: #747474;
+  color: white;
+}
 .collection_page .word_list_wrap {
-  width: 90%;
+  width: 94%;
   display: flex;
   flex-direction: column;
   height: 70rpx;
@@ -28,4 +51,9 @@ page {
 .collection_page .word_list_wrap .single_word_wrap .phonetic {
   font-size: 28rpx;
   color: steelblue;
+}
+.collection_page .empty_list {
+  margin-top: 40rpx;
+  color: #858585;
+  font-size: 30rpx;
 }

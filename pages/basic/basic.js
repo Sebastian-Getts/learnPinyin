@@ -466,7 +466,7 @@ Page({
     return greetText
   },
 
-  onLoad: function(options) {
+  onLoad: function (options) {
     var greetText = this.formatTime();
     this.setData({
       list: this.data.list2,

@@ -18,7 +18,7 @@ Page({
     testSuccess: false,
     wordList: [],
     singlePinyin: [],
-    openId: ''
+    openid: ''
   },
 
   boardbtn(e) {
@@ -137,9 +137,9 @@ Page({
   },
 
   getUserBasicInfo() {
-    const openId = wx.getStorageSync("openid");
+    const openid = wx.getStorageSync("openid");
     this.setData({
-      openId
+      openid
     })
 
   },
@@ -198,7 +198,7 @@ Page({
     const map = this.data.wordList[0];
     const { encode } = map;
     wx.navigateTo({
-      url: '/pages/more/more' + '?word=' + encode,
+      url: '/pages/more/more' + '?encode=' + encode,
     });
   },
 
@@ -252,8 +252,9 @@ Page({
   async collect() {
     try {
       let word_collection = this.data.wordList[0];
-      const { openId } = this.data;
-      word_collection = { ...word_collection, openId };
+      const { openid } = this.data;
+      const timestamp = new Date().getTime();
+      word_collection = { ...word_collection, openid, timestamp };
       const res = await request({ url: 'collect/word', method: 'POST', data: word_collection });
       await showToast({ title: res });
     } catch (error) {
