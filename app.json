@@ -5,8 +5,7 @@
     "pages/collection/collection",
     "pages/about/about",
     "pages/more/more",
-    "pages/profile/profile",
-    "pages/test/test"
+    "pages/profile/profile"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -30,7 +29,7 @@
       },
       {
         "pagePath": "pages/profile/profile",
-        "text": "关于",
+        "text": "我的",
         "iconPath": "utils/images/about/about.png",
         "selectedIconPath": "utils/images/about/abouted.png"
       }

@@ -7,21 +7,32 @@
     <open-data class="nickname" type="userNickName"></open-data>
   </view>
   <view class="choose-box">
-    <view class="choose" bindtap="choose" id='2' style="background:{{bg2==false?'rgb(156, 118, 153)':'rgb(117, 7, 108)'}}">声母</view>
-    <view class="choose" bindtap="choose" id='1' style="background:{{bg1==false?'rgb(156, 118, 153)':'rgb(117, 7, 108)'}}">韵母</view>
-    <view class="choose" bindtap="choose" id='3' style="background:{{bg3==false?'rgb(156, 118, 153)':'rgb(117, 7, 108)'}}">字母</view>
+    <view class="choose" bindtap="choose" id='2' style="background:{{bg2==false?'rgb(156, 118, 153)':'rgb(117, 7, 108)'}}">
+      声母
+    </view>
+    <view class="choose" bindtap="choose" id='1' style="background:{{bg1==false?'rgb(156, 118, 153)':'rgb(117, 7, 108)'}}">
+      韵母
+    </view>
+    <view class="choose" bindtap="choose" id='3' style="background:{{bg3==false?'rgb(156, 118, 153)':'rgb(117, 7, 108)'}}">
+      字母
+    </view>
     <view class="choose1" bindtap="shuffle">乱序</view>
-    <view class="choose3" bindtap="displaybtn">
+    <view class="choose3" bindtap="displaybtn_test">
       <view wx:if="{{display}}">收缩</view>
       <view wx:else>展开</view>
     </view>
     <view class="choose2" bindtap="resume">恢复</view>
   </view>
   <view class="content">
-    <view wx:key="{{item.value}}" wx:for="{{list}}" bindtap="reverse" class="{{display==true?'flex-item-display':'flex-item'}}" data-myvalue="{{item.value}}">
-      <view wx:if="{{item.flag}}">{{item.name}}</view>
-      <view wx:else>{{item.value}}</view>
-      <view wx:if="{{display}}">{{item.value}}</view>
+    <view wx:key="index" wx:for="{{list}}">
+      <view class="verticle_group">
+        <view animation="{{item.ani_man}}" bindtap="reverse" data-myvalue="{{item.value}}" class="{{display==true?'flex-item-display':'flex-item'}}">
+          {{item.value}}
+        </view>
+        <view animation="{{item.ani_back}}" bindtap="reverse" class="{{display==true?'flex-item-display':'flex-item back'}}" data-myvalue="{{item.value}}">
+          {{item.name}}
+        </view>
+      </view>
     </view>
   </view>
 </view>

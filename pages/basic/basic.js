@@ -1,4 +1,3 @@
-// pages/yunmu/yunmu.js
 Page({
 
   /**
@@ -333,6 +332,7 @@ Page({
       value: "Z",
       flag: true
     }],
+    animation_list: [],
     bg1: false,
     bg2: false,
     bg3: false,
@@ -347,6 +347,23 @@ Page({
       for (var i = 0; i < list.length; i++) {
         map = list[i];
         if (map.value == temp) {
+
+          this.animation_main = wx.createAnimation({ duration: 400, timingFunction: 'linear' })
+          this.animation_back = wx.createAnimation({ duration: 400, timingFunction: 'linear' })
+
+          // 点击正面
+          if (map.flag == false) {
+            this.animation_main.rotateY(180).step();
+            this.animation_back.rotateY(0).step();
+          }
+          else {
+            this.animation_main.rotateY(0).step()
+            this.animation_back.rotateY(180).step()
+          }
+          map.ani_man = this.animation_main
+          map.ani_back = this.animation_back
+
+          // 更改flag
           list[i].flag = !map.flag;
           this.setData({
             list: list
@@ -382,23 +399,23 @@ Page({
   resume(v = false) {
     var list = this.data.list;
     var map;
-    for (var i = 0; i < list.length; i++) {
-      map = list[i];
-      if (!map.flag) {
-        map.flag = true;
-        v = true;
-      }
+
+    this.animation_main = wx.createAnimation({ duration: 400, timingFunction: 'linear' })
+    this.animation_back = wx.createAnimation({ duration: 400, timingFunction: 'linear' })
+
+
+    this.animation_main.rotateY(180).step();
+    this.animation_back.rotateY(0).step();
+
+    for (let i = 0; i < list.length; i++) {
+      list[i].ani_man = this.animation_main
+      list[i].ani_back = this.animation_back
     }
-    if (v == true) {
-      this.setData({
-        list: list
-      })
-    } else {
-      wx.showToast({
-        title: '全都是字母了哦~',
-        icon: 'none'
-      })
-    }
+
+    this.setData({
+      list: list
+    })
+
   },
 
   choose(e) {
@@ -408,15 +425,39 @@ Page({
     var bg2 = false;
     var bg3 = false;
     var length = this.data.list.length;
+
     if (flag == 1 && length != 34) {
       list = this.data.list1
       bg1 = true;
+      if (list[0].ani_man == null) {
+        console.log('init animation...');
+        this.animation_main = wx.createAnimation({ duration: 400, timingFunction: 'linear' })
+        this.animation_back = wx.createAnimation({ duration: 400, timingFunction: 'linear' })
+        this.animation_main.rotateY(180).step();
+        this.animation_back.rotateY(0).step();
+        for (let i = 0; i < list.length; i++) {
+          list[i].ani_man = this.animation_main
+          list[i].ani_back = this.animation_back
+        }
+      }
     } else if (flag == 2 && length != 21) {
       list = this.data.list2
       bg2 = true;
     } else if (flag == 3 && length != 26) {
       list = this.data.list3
       bg3 = true;
+
+      if (list[0].ani_man == null) {
+        console.log('init animation list3...');
+        this.animation_main = wx.createAnimation({ duration: 400, timingFunction: 'linear' })
+        this.animation_back = wx.createAnimation({ duration: 400, timingFunction: 'linear' })
+        this.animation_main.rotateY(180).step();
+        this.animation_back.rotateY(0).step();
+        for (let i = 0; i < list.length; i++) {
+          list[i].ani_man = this.animation_main
+          list[i].ani_back = this.animation_back
+        }
+      }
     }
 
     if ((flag == 1 && length == 34) || (flag == 2 && length == 21) || (flag == 3 && length == 26)) {
@@ -439,6 +480,13 @@ Page({
     this.setData({
       display: !this.data.display
     })
+  },
+
+  displaybtn_test() {
+    wx.showToast({
+      title: '功能开发中~',
+      icon: 'none'
+    });
   },
 
 
@@ -468,10 +516,31 @@ Page({
 
   onLoad: function (options) {
     var greetText = this.formatTime();
+
+    let { list2 } = this.data;
+
+    this.animation_main = wx.createAnimation({ duration: 400, timingFunction: 'linear' })
+    this.animation_back = wx.createAnimation({ duration: 400, timingFunction: 'linear' })
+
+
+    this.animation_main.rotateY(180).step();
+    this.animation_back.rotateY(0).step();
+
+    for (let i = 0; i < list2.length; i++) {
+      list2[i].ani_man = this.animation_main
+      list2[i].ani_back = this.animation_back
+    }
     this.setData({
-      list: this.data.list2,
+      list: list2,
       bg2: true,
       greet: greetText
     })
   },
+
+  /**
+* 用户点击右上角分享
+*/
+  onShareAppMessage: function () {
+
+  }
 })

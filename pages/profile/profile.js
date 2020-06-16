@@ -27,5 +27,12 @@ Page({
 
   async yijian() {
     showToast({ title: '开发中~' });
+  },
+
+  /**
+  * 用户点击右上角分享
+  */
+  onShareAppMessage: function () {
+
   }
 })

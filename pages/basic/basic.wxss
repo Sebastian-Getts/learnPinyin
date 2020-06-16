@@ -4,42 +4,43 @@ page {
 
 .flex-container {
   /* We first create a flex layout context */
-  display: flex;
+  display       : flex;
   flex-direction: column;
 }
 
 .topbar {
-  width: 100%;
-  display: flex;
+  width         : 100%;
+  display       : flex;
   flex-direction: row;
-  align-items: center;
-  background: linear-gradient(120deg, rgb(216, 123, 123), rgb(115, 115, 185));
-  font-size: 26rpx;
+  align-items   : center;
+  background    : linear-gradient(120deg, rgb(216, 123, 123), rgb(115, 115, 185));
+  font-size     : 26rpx;
 }
 
 .topbar .avatar {
-  height: 30rpx;
-  width: 30rpx;
+  height       : 30rpx;
+  width        : 30rpx;
   border-radius: 70rpx;
-  overflow: hidden;
-  margin: 6rpx 20rpx;
+  overflow     : hidden;
+  margin       : 6rpx 20rpx;
 }
 
-.topbar  .nickname {
+.topbar .nickname {
   margin-left: 6rpx;
 }
 
 .flex-item {
-  background-color: rgb(76, 121, 81);
-  padding: 5rpx;
-  width: 200rpx;
-  height: 150rpx;
-  margin-top: 20rpx;
-  line-height: 150rpx;
-  color: white;
-  font-weight: bold;
-  font-size: 56rpx;
-  text-align: center;
+  background-color   : rgb(76, 121, 81);
+  padding            : 5rpx;
+  width              : 200rpx;
+  height             : 150rpx;
+  margin-top         : 20rpx;
+  line-height        : 150rpx;
+  color              : white;
+  font-weight        : bold;
+  font-size          : 56rpx;
+  text-align         : center;
+  backface-visibility: hidden;
 }
 
 .flex-item:active {
@@ -47,92 +48,94 @@ page {
 }
 
 .content {
-  /* We first create a flex layout context */
-  display: flex;
-  /* Then we define the flow direction 
-     and if we allow the items to wrap 
-   * Remember this is the same as:
-   * flex-direction: row;
-   * flex-wrap: wrap;
-   */
-  flex-flow: row wrap;
-  /* Then we define how is distributed the remaining space */
+  display        : flex;
+  flex-flow      : row wrap;
   justify-content: space-around;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  margin-bottom: 20rpx;
+  margin-bottom  : 20rpx;
+}
+
+.back {
+  transform : rotateY(-360deg);
+  position  : absolute;
+  margin-top: 10rpx;
+}
+
+.verticle_group {
+  display        : flex;
+  flex-direction : column;
+  align-items    : center;
+  justify-content: center;
 }
 
 .choose-box {
-  display: flex;
-  flex-flow: row wrap;
+  display        : flex;
+  flex-flow      : row wrap;
   justify-content: space-around;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  border-bottom: solid 1rpx gray;
-  background: rgb(110, 106, 129);
+  padding        : 0;
+  margin         : 0;
+  list-style     : none;
+  border-bottom  : solid 1rpx gray;
+  background     : rgb(110, 106, 129);
 }
 
 .choose {
   background-color: rgb(212, 39, 198);
-  padding: 5rpx;
-  width: 200rpx;
-  height: 150rpx;
-  margin-top: 20rpx;
-  line-height: 150rpx;
-  color: white;
-  font-weight: bold;
-  font-size: 56rpx;
-  text-align: center;
-  border-radius: 50rpx;
-  margin-bottom: 10rpx;
+  padding         : 5rpx;
+  width           : 200rpx;
+  height          : 150rpx;
+  margin-top      : 20rpx;
+  line-height     : 150rpx;
+  color           : white;
+  font-weight     : bold;
+  font-size       : 56rpx;
+  text-align      : center;
+  border-radius   : 50rpx;
+  margin-bottom   : 10rpx;
 }
 
 .choose1 {
   background-color: rgb(212, 157, 39);
-  padding: 5rpx;
-  width: 200rpx;
-  height: 150rpx;
-  margin-top: 20rpx;
-  line-height: 150rpx;
-  color: white;
-  font-weight: bold;
-  font-size: 56rpx;
-  text-align: center;
-  border-radius: 50rpx;
-  margin-bottom: 10rpx;
+  padding         : 5rpx;
+  width           : 200rpx;
+  height          : 150rpx;
+  margin-top      : 20rpx;
+  line-height     : 150rpx;
+  color           : white;
+  font-weight     : bold;
+  font-size       : 56rpx;
+  text-align      : center;
+  border-radius   : 50rpx;
+  margin-bottom   : 10rpx;
 }
 
 .choose2 {
   background-color: rgb(61, 109, 182);
-  padding: 5rpx;
-  width: 200rpx;
-  height: 150rpx;
-  margin-top: 20rpx;
-  line-height: 150rpx;
-  color: white;
-  font-weight: bold;
-  font-size: 56rpx;
-  text-align: center;
-  border-radius: 50rpx;
-  margin-bottom: 10rpx;
+  padding         : 5rpx;
+  width           : 200rpx;
+  height          : 150rpx;
+  margin-top      : 20rpx;
+  line-height     : 150rpx;
+  color           : white;
+  font-weight     : bold;
+  font-size       : 56rpx;
+  text-align      : center;
+  border-radius   : 50rpx;
+  margin-bottom   : 10rpx;
 }
 
 .choose3 {
   background-color: rgb(216, 115, 57);
-  padding: 5rpx;
-  width: 200rpx;
-  height: 150rpx;
-  margin-top: 20rpx;
-  line-height: 150rpx;
-  color: white;
-  font-weight: bold;
-  font-size: 56rpx;
-  text-align: center;
-  border-radius: 50rpx;
-  margin-bottom: 10rpx;
+  padding         : 5rpx;
+  width           : 200rpx;
+  height          : 150rpx;
+  margin-top      : 20rpx;
+  line-height     : 150rpx;
+  color           : white;
+  font-weight     : bold;
+  font-size       : 56rpx;
+  text-align      : center;
+  border-radius   : 50rpx;
+  margin-bottom   : 10rpx;
 }
 
 .choose1:active {
@@ -148,16 +151,16 @@ page {
 }
 
 .flex-item-display {
-  display: flex;
-  flex-direction: column;
+  display         : flex;
+  flex-direction  : column;
   background-color: rgb(92, 63, 69);
-  padding: 5rpx;
-  width: 200rpx;
-  height: 160rpx;
-  margin-top: 20rpx;
-  line-height: 80rpx;
-  color: white;
-  font-weight: bold;
-  font-size: 40rpx;
-  text-align: center;
+  padding         : 5rpx;
+  width           : 200rpx;
+  height          : 160rpx;
+  margin-top      : 20rpx;
+  line-height     : 80rpx;
+  color           : white;
+  font-weight     : bold;
+  font-size       : 40rpx;
+  text-align      : center;
 }

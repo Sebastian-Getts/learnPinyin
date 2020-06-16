@@ -33,10 +33,17 @@ Page({
   },
 
   getMore(e) {
-    const  encode  = e.target.id;
+    const encode = e.target.id;
     wx.navigateTo({
       url: '/pages/more/more' + '?encode=' + encode,
     });
   },
+
+  /**
+  * 用户点击右上角分享
+  */
+  onShareAppMessage: function () {
+
+  }
 
 })

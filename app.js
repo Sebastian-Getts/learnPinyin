@@ -44,7 +44,7 @@ App({
     })
   },
   globalData: {
-    // base_url: 'https://www.venezza.top/learnPinyin/',
-    base_url: 'http://localhost:8001/learnPinyin/',
+    base_url: 'https://www.venezza.top/learnPinyin/',
+    // base_url: 'http://localhost:8001/learnPinyin/',
   }
 })
