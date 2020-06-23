@@ -184,7 +184,6 @@ Page({
 
   async nextWord() {
     let { wordList } = this.data;
-    console.log(wordList.length);
     if (wordList.length == 1) {
       this.getNewWord();
     } else {

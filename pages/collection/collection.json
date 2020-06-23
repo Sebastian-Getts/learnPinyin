@@ -1,5 +1,7 @@
 {
   "navigationBarTitleText": "我的收藏",
   "navigationBarBackgroundColor": "#FFE4E1",
-  "usingComponents": {}
+  "usingComponents": {
+    "swider-left": "../../components/slide_left/index"
+  }
 }

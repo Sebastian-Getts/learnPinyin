@@ -1,10 +1,10 @@
 <view wx:if="{{letterOrWord}}" class="screen" style="background: {{bingo==true?'rgb(65, 60, 60)':''}}">
-  <view class="singleLetter" wx:key="{{index}}" wx:for="{{exam}}" style="color:{{item.value==true?'white':'black'}};background:{{item.value==true? 'rgb(65, 60, 60)':'rgb(129, 123, 122)'}} ">
+  <view class="singleLetter" wx:key="index" wx:for="{{exam}}" style="color:{{item.value==true?'white':'black'}};background:{{item.value==true? 'rgb(65, 60, 60)':'rgb(129, 123, 122)'}} ">
     {{item.name}}
   </view>
 </view>
 <view wx:else class="screenChalenge">
-  <view class="singleWord" wx:key="{{index}}" wx:for="{{wordList}}" wx:if="{{index==0}}" style="color:{{item.value==true?'white':'black'}};background:{{item.value==true? 'rgb(65, 60, 60)':'rgb(129, 123, 122)'}} ">
+  <view class="singleWord" wx:key="index" wx:for="{{wordList}}" wx:if="{{index==0}}" style="color:{{item.value==true?'white':'black'}};background:{{item.value==true? 'rgb(65, 60, 60)':'rgb(129, 123, 122)'}} ">
     <view class="word">{{item.word}}</view>
     <view wx:if="{{tips}}" class="pinyin">{{item.pinyin}}</view>
     <view wx:else class="testPinyin">
@@ -64,7 +64,7 @@
   </view>
 </view>
 <view class="keyboard" wx:else>
-  <view wx:key="{{index}}" wx:for="{{list}}" class="boardbtn" bindtap="{{letterOrWord==true? 'boardbtn':'challengeBoard'}}" id="{{item}}">
+  <view wx:key="index" wx:for="{{list}}" class="boardbtn" bindtap="{{letterOrWord==true? 'boardbtn':'challengeBoard'}}" id="{{item}}">
     {{item}}
   </view>
   <view class="boardbtn" bindtap="{{letterOrWord==true?  'blankbtn':'challengeBlank'}}" style="width:500rpx">

@@ -1,4 +1,5 @@
 # learnPinyin
+
 一款简单的学习拼音的工具。
 
 ## 功能
@@ -29,14 +30,25 @@
 
 :ballot_box_with_check: 历史上的今天（娱乐放松）
 
+:ballot_box_with_check: 对感兴趣的汉字收藏
+
+:ballot_box_with_check: 管理收藏的文字（删除）
+
+:ballot_box: 收藏的文字按日期查询
+
+
+
 ## 目的
 
 帮助长辈熟悉拼音。
 
+## 致谢
+
+- JetBrains提供的开发工具
+- [bigmeow的左划删除组件](https://github.com/bigmeow/minapp-slider-left)
+
 ## 体验
 
 扫描下方的小程序码体验
-
-
 
 ![pinyin.jpg](https://i.loli.net/2020/02/23/LOpUiVxIaM825lW.jpg)

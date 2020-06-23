@@ -8,48 +8,59 @@ page {
   justify-content: center;
 }
 .collection_page .panel_wrap {
-  background: seashell;
+  background: rgba(255, 228, 225, 0.603);
   display: flex;
   width: 94%;
+  align-items: center;
+  justify-content: space-around;
+}
+.collection_page .panel_wrap .common_frame {
+  height: 100rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200rpx;
+  height: 60rpx;
+  border-radius: 24rpx;
+  border: 1rpx solid green;
+  overflow: hidden;
+}
+.collection_page .panel_wrap .month_pick {
+  background: linear-gradient(120deg, #c298e9, #d6a98a);
 }
 .collection_page .panel_wrap .total {
-  font-size: 26rpx;
-  margin: 0 20rpx;
+  background: linear-gradient(120deg, #98c9e9, #d6a98a);
 }
 .collection_page .panel_wrap .deleteAll {
-  height: 40rpx;
-  width: 140rpx;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 24rpx;
-  overflow: hidden;
-  background: silver;
+  background: linear-gradient(120deg, #d82121, #d6a98a);
 }
 .collection_page .panel_wrap .deleteAll:active {
   background: #747474;
   color: white;
 }
 .collection_page .word_list_wrap {
-  width: 94%;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  height: 70rpx;
+  height: 100rpx;
   justify-content: center;
   margin: 10rpx 0;
   border-bottom: 1rpx dotted #cccccc;
+  background-color: mistyrose;
 }
 .collection_page .word_list_wrap .single_word_wrap {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 94%;
+  margin: auto;
 }
 .collection_page .word_list_wrap .single_word_wrap .word {
-  font-size: 32rpx;
+  font-size: 42rpx;
   font-weight: 600;
 }
 .collection_page .word_list_wrap .single_word_wrap .phonetic {
-  font-size: 28rpx;
+  font-size: 36rpx;
   color: steelblue;
 }
 .collection_page .empty_list {
