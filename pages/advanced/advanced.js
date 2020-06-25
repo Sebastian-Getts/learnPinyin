@@ -252,7 +252,8 @@ Page({
     try {
       let word_collection = this.data.wordList[0];
       const { openid } = this.data;
-      const timestamp = new Date().getTime();
+      let timestamp = new Date().getTime();
+      timestamp = this.formatDate(timestamp);
       word_collection = { ...word_collection, openid, timestamp };
       const res = await request({ url: 'collect/word', method: 'POST', data: word_collection });
       await showToast({ title: res });
@@ -271,7 +272,26 @@ Page({
       this.nextWord();
     }
   },
-  
+
+  formatDate(time) {
+    var date = new Date(time);
+
+    var year = date.getFullYear(),
+      month = date.getMonth() + 1,//月份是从0开始的
+      day = date.getDate(),
+      hour = date.getHours(),
+      min = date.getMinutes(),
+      sec = date.getSeconds();
+    var newTime = year + '-' +
+      (month < 10 ? '0' + month : month) + '-' +
+      (day < 10 ? '0' + day : day) + ' ' +
+      (hour < 10 ? '0' + hour : hour) + ':' +
+      (min < 10 ? '0' + min : min) + ':' +
+      (sec < 10 ? '0' + sec : sec);
+
+    return newTime;
+  },
+
   /**
  * 用户点击右上角分享
  */

@@ -10,24 +10,35 @@ Page({
     delBtnWidth: 160,
     isScroll: true,
     windowHeight: 0,
+    year: '',
+    month: '全部',
+    word_list: []
   },
 
-  bindDateChange: function (e) {
+  async bindDateChange(e) {
     console.log('picker发送选择改变，携带值为', e.detail.value);
     let { value } = e.detail;
     const month = value.split('-')[1];
+    const year = value.split('-')[0];
+    const openid = wx.getStorageSync("openid");
+    const word_list = await request({ url: 'collect/filterWordByMonth', method: 'POST', data: { year, month, openid } });
     this.setData({
-      month
+      year,
+      month,
+      word_list
     })
   },
 
-  getCurrentMonth() {
+  getEndDate() {
     let month = new Date().getMonth() + 1;
     if (month.toString().length == 1) {
       month = "0" + month;
     }
+    let year = new Date().getFullYear();
+    console.log(year);
+    const end_date = year + "-" + month;
     this.setData({
-      month
+      end_date
     })
   },
 
@@ -36,7 +47,7 @@ Page({
    */
   onLoad: function (options) {
     this.getUserWordList();
-    this.getCurrentMonth();
+    this.getEndDate();
   },
 
   async getUserWordList() {
@@ -52,10 +63,15 @@ Page({
   },
 
   async deleteAll() {
+    const { word_list, month, year } = this.data;
+    if (word_list.length == 0) {
+      await showToast({ title: '收藏列表已经是空空如也' });
+      return;
+    }
     var that = this;
     wx.showModal({
       title: '温馨提示',
-      content: '你确定要删除当月所有收藏的文字吗？（删除后不可恢复）',
+      content: '你确定要删除所有收藏的文字吗？（删除后不可恢复）',
       showCancel: true,
       cancelText: '取消',
       cancelColor: '#000000',
@@ -64,13 +80,19 @@ Page({
       async success(result) {
         if (result.confirm) {
           const openid = wx.getStorageSync("openid");
-          const res = await request({ url: 'collect/wordMinusAll', method: 'POST', data: { openid } });
+          let res;
+          if (month == '全部') {
+            res = await request({ url: 'collect/wordMinusAll', method: 'POST', data: { openid } });
+          } else {
+            res = await request({ url: 'collect/deleteByMonth', method: 'POST', data: { year, month, openid } });
+          }
           await showToast({ title: res });
-          that.onLoad();
+          const word_list = [];
+          that.setData({
+            word_list
+          })
         }
-      },
-      fail: () => { },
-      complete: () => { }
+      }
     });
 
   },
@@ -110,12 +132,5 @@ Page({
       word_list: this.data.word_list
     })
   },
-
-  /**
-  * 用户点击右上角分享
-  */
-  onShareAppMessage: function () {
-
-  }
 
 })

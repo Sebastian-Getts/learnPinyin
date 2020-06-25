@@ -13,9 +13,11 @@ page {
   width: 94%;
   align-items: center;
   justify-content: space-around;
+  position: fixed;
+  top: 0;
+  margin: 20rpx 0;
 }
 .collection_page .panel_wrap .common_frame {
-  height: 100rpx;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -38,7 +40,11 @@ page {
   background: #747474;
   color: white;
 }
-.collection_page .word_list_wrap {
+.collection_page .content_wrap {
+  margin-top: 100rpx;
+  width: 100%;
+}
+.collection_page .content_wrap .word_list_wrap {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -48,23 +54,26 @@ page {
   border-bottom: 1rpx dotted #cccccc;
   background-color: mistyrose;
 }
-.collection_page .word_list_wrap .single_word_wrap {
+.collection_page .content_wrap .word_list_wrap .single_word_wrap {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 94%;
   margin: auto;
 }
-.collection_page .word_list_wrap .single_word_wrap .word {
+.collection_page .content_wrap .word_list_wrap .single_word_wrap .word {
   font-size: 42rpx;
   font-weight: 600;
 }
-.collection_page .word_list_wrap .single_word_wrap .phonetic {
+.collection_page .content_wrap .word_list_wrap .single_word_wrap .phonetic {
   font-size: 36rpx;
   color: steelblue;
 }
-.collection_page .empty_list {
+.collection_page .content_wrap .empty_list {
   margin-top: 40rpx;
   color: #858585;
   font-size: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

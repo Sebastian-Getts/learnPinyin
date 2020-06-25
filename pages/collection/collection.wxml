@@ -1,18 +1,20 @@
 <view class="collection_page">
     <view class="panel_wrap">
         <view class="common_frame month_pick">
-            <picker mode="date" value="{{month}}" start="2020-03-01" fields="month" bindchange="bindDateChange">
+            <picker mode="date" value="{{month}}" start="2020-03" end="{{end_date}}" fields="month" bindchange="bindDateChange">
                 <view class="picker">当前月份: {{month}}</view>
             </picker>
         </view>
         <view class="common_frame total">总计：{{word_list.length}}</view>
         <view class="common_frame deleteAll" bindtap="deleteAll">清空</view>
     </view>
-    <swider-left class="word_list_wrap" wx:for="{{word_list}}" wx:key="index" open="{{item.isOpen}}" id='{{item.encode}}' bind:sliderLeftStart="handleSliderLeftStart" bind:delete="handleDelete">
-        <view class="single_word_wrap" id='{{item.encode}}' bindtap="getMore">
-            <view class="word">{{item.word}}</view>
-            <view class="phonetic">{{item.phonetic}}</view>
-        </view>
-    </swider-left>
-    <view class="empty_list" wx:if="{{word_list.length==0}}">您没有收藏的文字，快去收藏吧！</view>
+    <view class="content_wrap">
+        <swider-left class="word_list_wrap" wx:for="{{word_list}}" wx:key="index" open="{{item.isOpen}}" id='{{item.encode}}' bind:sliderLeftStart="handleSliderLeftStart" bind:delete="handleDelete">
+            <view class="single_word_wrap" id='{{item.encode}}' bindtap="getMore">
+                <view class="word">{{item.word}}</view>
+                <view class="phonetic">{{item.phonetic}}</view>
+            </view>
+        </swider-left>
+        <view class="empty_list" wx:if="{{word_list.length==0}}">当前您没有收藏的文字，快去收藏吧！</view>
+    </view>
 </view>

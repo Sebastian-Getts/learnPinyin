@@ -14,9 +14,12 @@ page {
         width          : 94%;
         align-items    : center;
         justify-content: space-around;
+        position       : fixed;
+        top            : 0;
+        margin         : 20rpx 0;
+
 
         .common_frame {
-            height         : 100rpx;
             display        : flex;
             justify-content: center;
             align-items    : center;
@@ -46,38 +49,47 @@ page {
         }
     }
 
-    .word_list_wrap {
-        width           : 100%;
-        display         : flex;
-        flex-direction  : column;
-        height          : 100rpx;
-        justify-content : center;
-        margin          : 10rpx 0;
-        border-bottom   : 1rpx dotted #cccccc;
-        background-color: mistyrose;
+    .content_wrap {
+        margin-top: 100rpx;
+        width     : 100%;
 
-        .single_word_wrap {
-            display        : flex;
-            align-items    : center;
-            justify-content: space-between;
-            width          : 94%;
-            margin         : auto;
+        .word_list_wrap {
+            width           : 100%;
+            display         : flex;
+            flex-direction  : column;
+            height          : 100rpx;
+            justify-content : center;
+            margin          : 10rpx 0;
+            border-bottom   : 1rpx dotted #cccccc;
+            background-color: mistyrose;
 
-            .word {
-                font-size  : 42rpx;
-                font-weight: 600;
-            }
+            .single_word_wrap {
+                display        : flex;
+                align-items    : center;
+                justify-content: space-between;
+                width          : 94%;
+                margin         : auto;
 
-            .phonetic {
-                font-size: 36rpx;
-                color    : steelblue;
+                .word {
+                    font-size  : 42rpx;
+                    font-weight: 600;
+                }
+
+                .phonetic {
+                    font-size: 36rpx;
+                    color    : steelblue;
+                }
             }
         }
-    }
 
-    .empty_list {
-        margin-top: 40rpx;
-        color     : #858585;
-        font-size : 30rpx;
+
+        .empty_list {
+            margin-top     : 40rpx;
+            color          : #858585;
+            font-size      : 30rpx;
+            display        : flex;
+            align-items    : center;
+            justify-content: center;
+        }
     }
 }
