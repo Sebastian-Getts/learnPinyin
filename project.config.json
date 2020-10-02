@@ -27,7 +27,7 @@
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.11.2",
+	"libVersion": "2.13.1",
 	"appid": "wxad52309b82fd0e93",
 	"projectname": "learnPinyin",
 	"debugOptions": {

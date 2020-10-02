@@ -1,6 +1,14 @@
-import { request } from "../../utils/request";
-import { login, showToast, showModal } from "../../utils/asyncwx";
-import { requestPro } from "../../utils/requestPro";
+import {
+  request
+} from "../../utils/request";
+import {
+  login,
+  showToast,
+  showModal
+} from "../../utils/asyncwx";
+import {
+  requestPro
+} from "../../utils/requestPro";
 const app = getApp();
 Page({
 
@@ -57,12 +65,12 @@ Page({
           });
           if (flag) {
             var that = this;
-            setTimeout(function () {
+            setTimeout(function() {
               that.setData({
                 bingo: flag
               })
             }, 200); //延迟时间 这里是1秒
-            setTimeout(function () {
+            setTimeout(function() {
               that.blankbtn();
             }, 1000)
           }
@@ -128,10 +136,12 @@ Page({
   },
 
   async test() {
-    await showToast({ title: '功能开发中~' });
+    await showToast({
+      title: '功能开发中~'
+    });
   },
 
-  onLoad: function (options) {
+  onLoad: function(options) {
     this.generate();
     this.getUserBasicInfo();
   },
@@ -145,7 +155,10 @@ Page({
   },
   async changeScreen() {
     try {
-      let { letterOrWord, wordList } = this.data;
+      let {
+        letterOrWord,
+        wordList
+      } = this.data;
       if (letterOrWord && (wordList.length == 0)) {
         this.getNewWord();
       }
@@ -153,12 +166,19 @@ Page({
         letterOrWord: !this.data.letterOrWord
       })
     } catch (error) {
-      await showToast({ title: error });
+      await showToast({
+        title: error
+      });
     }
   },
 
   async getNewWord() {
-    const { wordList } = await request({ url: "pickOne/word/5", method: "GET" });
+    const {
+      wordList
+    } = await request({
+      url: "pickOne/word/5",
+      method: "GET"
+    });
     this.nextWord_help(wordList);
   },
 
@@ -171,7 +191,9 @@ Page({
       name: element,
       flag: false
     }));
-    let { testSuccess } = this.data;
+    let {
+      testSuccess
+    } = this.data;
     testSuccess = false;
     this.setData({
       wordList,
@@ -183,7 +205,9 @@ Page({
   },
 
   async nextWord() {
-    let { wordList } = this.data;
+    let {
+      wordList
+    } = this.data;
     if (wordList.length == 1) {
       this.getNewWord();
     } else {
@@ -195,7 +219,9 @@ Page({
 
   getmore() {
     const map = this.data.wordList[0];
-    const { encode } = map;
+    const {
+      encode
+    } = map;
     wx.navigateTo({
       url: '/pages/more/more' + '?encode=' + encode,
     });
@@ -221,7 +247,7 @@ Page({
       if (v[j] == target) {
         test[i].flag = true; //更改判断标识
         if (i == test.length - 1) {
-          setTimeout(function () {
+          setTimeout(function() {
             wx.showToast({
               title: '正确啦，很厉害哦~',
               icon: 'none'
@@ -243,7 +269,9 @@ Page({
     }
 
     if (target == '') {
-      await showToast({ title: '全部正确了哦~' });
+      await showToast({
+        title: '全部正确了哦~'
+      });
     }
 
   },
@@ -251,23 +279,40 @@ Page({
   async collect() {
     try {
       let word_collection = this.data.wordList[0];
-      const { openid } = this.data;
+      const {
+        openid
+      } = this.data;
       let timestamp = new Date().getTime();
       timestamp = this.formatDate(timestamp);
-      word_collection = { ...word_collection, openid, timestamp };
-      const res = await request({ url: 'collect/word', method: 'POST', data: word_collection });
-      await showToast({ title: res });
+      word_collection = { ...word_collection,
+        openid,
+        timestamp
+      };
+      const res = await request({
+        url: 'collect/word',
+        method: 'POST',
+        data: word_collection
+      });
+      await showToast({
+        title: res
+      });
     } catch (error) {
-      await showModal({ content: error });
+      await showModal({
+        content: error
+      });
     }
   },
 
   async challengeBlank() {
-    const { singlePinyin } = this.data;
+    const {
+      singlePinyin
+    } = this.data;
     let hereFlag = false;
     singlePinyin.forEach(v => v.flag == false ? hereFlag = false : hereFlag = true);
     if (!hereFlag) {
-      await showToast({ title: '要按字母哦~' });
+      await showToast({
+        title: '要按字母哦~'
+      });
     } else {
       this.nextWord();
     }
@@ -277,7 +322,7 @@ Page({
     var date = new Date(time);
 
     var year = date.getFullYear(),
-      month = date.getMonth() + 1,//月份是从0开始的
+      month = date.getMonth() + 1, //月份是从0开始的
       day = date.getDate(),
       hour = date.getHours(),
       min = date.getMinutes(),
@@ -293,9 +338,9 @@ Page({
   },
 
   /**
- * 用户点击右上角分享
- */
-  onShareAppMessage: function () {
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function() {
 
   }
 })

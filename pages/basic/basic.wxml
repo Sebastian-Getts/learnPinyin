@@ -7,13 +7,13 @@
     <open-data class="nickname" type="userNickName"></open-data>
   </view>
   <view class="choose-box">
-    <view class="choose" bindtap="choose" id='2' style="background:{{bg2==false?'rgb(156, 118, 153)':'rgb(117, 7, 108)'}}">
+    <view class="choose" bindtap="choose" id='2' style="background:{{bg2==false?'rgb(156, 118, 153) ':'radial-gradient(rgb(156, 118, 153), rgb(117,7,108))'}}">
       声母
     </view>
-    <view class="choose" bindtap="choose" id='1' style="background:{{bg1==false?'rgb(156, 118, 153)':'rgb(117, 7, 108)'}}">
+    <view class="choose" bindtap="choose" id='1' style="background:{{bg1==false?'rgb(156, 118, 153) ':'radial-gradient(rgb(156, 118, 153), rgb(117,7,108))'}}">
       韵母
     </view>
-    <view class="choose" bindtap="choose" id='3' style="background:{{bg3==false?'rgb(156, 118, 153)':'rgb(117, 7, 108)'}}">
+    <view class="choose" bindtap="choose" id='3' style="background:{{bg3==false?'rgb(156, 118, 153) ':'radial-gradient(rgb(156, 118, 153), rgb(117,7,108))'}}">
       字母
     </view>
     <view class="choose1" bindtap="shuffle">乱序</view>

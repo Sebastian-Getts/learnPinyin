@@ -1,10 +1,10 @@
-<view wx:if="{{letterOrWord}}" class="screen" style="background: {{bingo==true?'rgb(65, 60, 60)':''}}">
-  <view class="singleLetter" wx:key="index" wx:for="{{exam}}" style="color:{{item.value==true?'white':'black'}};background:{{item.value==true? 'rgb(65, 60, 60)':'rgb(129, 123, 122)'}} ">
+<view wx:if="{{letterOrWord}}" class="screen" style="background: {{bingo==true?'rgb(81, 117, 109)':''}}">
+  <view class="singleLetter" wx:key="index" wx:for="{{exam}}" style="color:white;background:{{item.value==true? 'rgb(81, 117, 109)':'rgb(86, 81, 117)'}} ">
     {{item.name}}
   </view>
 </view>
 <view wx:else class="screenChalenge">
-  <view class="singleWord" wx:key="index" wx:for="{{wordList}}" wx:if="{{index==0}}" style="color:{{item.value==true?'white':'black'}};background:{{item.value==true? 'rgb(65, 60, 60)':'rgb(129, 123, 122)'}} ">
+  <view class="singleWord" wx:key="index" wx:for="{{wordList}}" wx:if="{{index==0}}" style="color:{{item.value==true?'white':'black'}};background:{{item.value==true? 'rgb(65, 60, 60)':'rgb(86, 81, 117)'}} ">
     <view class="word">{{item.word}}</view>
     <view wx:if="{{tips}}" class="pinyin">{{item.pinyin}}</view>
     <view wx:else class="testPinyin">
@@ -20,7 +20,7 @@
 <view class="midControll">
   <view class="changebtn" bindtap="changekbor">
     <p wx:if='{{showOrNot}}'>九键</p>
-    <p wx:else>全键盘</p>
+    <p wx:else>全键</p>
   </view>
   <view class="changebtn" bindtap="nextWord" style="visibility: {{letterOrWord==false? 'none':'hidden'}}">
     <p>换字</p>
@@ -28,7 +28,7 @@
   <view class="changebtn" bindtap="collect" style="visibility: {{letterOrWord==false? 'none':'hidden'}}">
     <p>收藏</p>
   </view>
-  <view class="changebtn" bindtap="changeScreen" style="background:{{letterOrWord==false?'linear-gradient(120deg,rgb(154, 172, 71), rgb(67, 76, 80))':'linear-gradient(120deg, rgb(78, 46, 61), rgb(154, 172, 71))'}}">
+  <view class="changebtn" bindtap="changeScreen" >
     <p>挑战</p>
   </view>
 </view>
