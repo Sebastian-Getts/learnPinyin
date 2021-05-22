@@ -495,21 +495,21 @@ Page({
       hour = now.getHours()
     var greetText;
     if (hour < 6) {
-      greetText = "凌晨好, "
+      greetText = "凌晨好 "
     } else if (hour < 9) {
-      greetText = "早上好, "
+      greetText = "早上好 "
     } else if (hour < 12) {
-      greetText = "上午好, "
+      greetText = "上午好 "
     } else if (hour < 14) {
-      greetText = "中午好, "
+      greetText = "中午好 "
     } else if (hour < 17) {
-      greetText = "下午好, "
+      greetText = "下午好 "
     } else if (hour < 19) {
-      greetText = "傍晚好, "
+      greetText = "傍晚好 "
     } else if (hour < 22) {
-      greetText = "晚上好, "
+      greetText = "晚上好 "
     } else {
-      greetText = "夜里好, "
+      greetText = "夜里好 "
     }
     return greetText
   },

@@ -21,7 +21,7 @@
       <view wx:if="{{display}}">收缩</view>
       <view wx:else>展开</view>
     </view>
-    <view class="choose2" bindtap="resume">恢复</view>
+    <view class="choose2" bindtap="resume">复原</view>
   </view>
   <view class="content">
     <view wx:key="index" wx:for="{{list}}">

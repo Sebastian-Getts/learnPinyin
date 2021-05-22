@@ -40,6 +40,6 @@
             <view class="iconfont icon-banben"></view>
             <text>当前版本</text>
         </view>
-        <view class="arrow">1.5.1</view>
+        <view class="arrow">1.5.6</view>
     </view>
 </view>

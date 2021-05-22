@@ -15,9 +15,10 @@ Page({
   },
 
   async shoucang() {
-    wx.navigateTo({
-      url: '/pages/collection/collection'
-    });
+    showToast({ title: '维护中~'});
+    // wx.navigateTo({
+    //   url: '/pages/collection/collection'
+    // });
 
   },
 
