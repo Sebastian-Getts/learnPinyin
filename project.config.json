@@ -1,7 +1,8 @@
 {
-  "description": "项目配置文件",
+  "description": "项目配置文件，详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
   "packOptions": {
-    "ignore": []
+    "ignore": [],
+    "include": []
   },
   "setting": {
     "urlCheck": false,
@@ -37,65 +38,52 @@
     "userConfirmedBundleSwitch": false,
     "packNpmManually": false,
     "packNpmRelationList": [],
-    "minifyWXSS": true
+    "minifyWXSS": true,
+    "lazyloadPlaceholderEnable": false,
+    "useStaticServer": true,
+    "showES6CompileOption": false,
+    "disableUseStrict": false,
+    "useCompilerPlugins": false,
+    "minifyWXML": true
   },
   "compileType": "miniprogram",
   "libVersion": "2.13.1",
   "appid": "wxad52309b82fd0e93",
   "projectname": "learnPinyin",
-  "debugOptions": {
-    "hidedInDevtools": []
-  },
-  "isGameTourist": false,
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
   "condition": {
-    "search": {
-      "list": []
-    },
-    "conversation": {
-      "list": []
-    },
-    "plugin": {
-      "list": []
-    },
-    "game": {
-      "currentL": -1,
-      "list": []
-    },
-    "gamePlugin": {
-      "list": []
-    },
     "miniprogram": {
       "list": [
         {
-          "id": 0,
           "name": "more",
           "pathName": "pages/more/more",
           "query": "word=好",
           "scene": null
         },
         {
-          "id": -1,
           "name": "advanced",
           "pathName": "pages/advanced/advanced",
           "query": "",
           "scene": null
         },
         {
-          "id": -1,
           "name": "profile",
           "pathName": "pages/profile/profile",
           "query": "",
           "scene": null
         },
         {
-          "id": -1,
           "name": "pages/collection/collection",
           "pathName": "pages/collection/collection",
+          "query": "",
           "scene": null
         }
       ]
     }
+  },
+  "editorSetting": {
+    "tabIndent": "insertSpaces",
+    "tabSize": 2
   }
 }

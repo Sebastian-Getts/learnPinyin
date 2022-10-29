@@ -29,6 +29,11 @@ Page({
     openid: ''
   },
 
+  /**
+   * 匹配目标字母
+   * @param {} e 
+   * @returns 
+   */
   boardbtn(e) {
     let v = e.target.id;
     v = v.toUpperCase();
@@ -75,6 +80,8 @@ Page({
             }, 1000)
           }
           return;
+        } else {
+          console.log("you choose the wrong answer~")
         }
       }
     }
@@ -123,7 +130,7 @@ Page({
       this.generate();
     } else {
       wx.showToast({
-        title: '全部输入正确才行哦~',
+        title: '天天开心，万事顺遂～',
         icon: 'none'
       })
     }
@@ -153,7 +160,11 @@ Page({
     })
 
   },
+  /**
+   * 更换至挑战模式
+   */
   async changeScreen() {
+    // 因服务器到期原因，暂时屏蔽调改功能
     this.test();
     // try {
     //   let {

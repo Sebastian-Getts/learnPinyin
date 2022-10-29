@@ -13,8 +13,8 @@
     <view class="choose" bindtap="choose" id='1' style="background:{{bg1==false?'rgb(156, 118, 153) ':'radial-gradient(rgb(156, 118, 153), rgb(117,7,108))'}}">
       韵母
     </view>
-    <view class="choose" bindtap="choose" id='3' style="background:{{bg3==false?'rgb(156, 118, 153) ':'radial-gradient(rgb(156, 118, 153), rgb(117,7,108))'}}">
-      字母
+    <view class="choose" bindtap="choose" id='3' style="background:{{bg3==false?'rgb(156, 118, 153) ':'radial-gradient(rgb(156, 118, 153), rgb(117,7,108))'}}; font-size:40rpx">
+      英文字母
     </view>
     <view class="choose1" bindtap="shuffle">乱序</view>
     <view class="choose3" bindtap="displaybtn_test">
