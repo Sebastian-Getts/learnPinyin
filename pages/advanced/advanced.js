@@ -165,23 +165,23 @@ Page({
    */
   async changeScreen() {
     // 因服务器到期原因，暂时屏蔽调改功能
-    this.test();
-    // try {
-    //   let {
-    //     letterOrWord,
-    //     wordList
-    //   } = this.data;
-    //   if (letterOrWord && (wordList.length == 0)) {
-    //     this.getNewWord();
-    //   }
-    //   this.setData({
-    //     letterOrWord: !this.data.letterOrWord
-    //   })
-    // } catch (error) {
-    //   await showToast({
-    //     title: error
-    //   });
-    // }
+    // this.test();
+    try {
+      let {
+        letterOrWord,
+        wordList
+      } = this.data;
+      if (letterOrWord && (wordList.length == 0)) {
+        this.getNewWord();
+      }
+      this.setData({
+        letterOrWord: !this.data.letterOrWord
+      })
+    } catch (error) {
+      await showToast({
+        title: error
+      });
+    }
   },
 
   async getNewWord() {

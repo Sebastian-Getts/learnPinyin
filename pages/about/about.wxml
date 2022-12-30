@@ -13,7 +13,7 @@
   <view class="contact">
     <view class="social">
       <image src="/utils/images/about/email.png"></image>
-      <text selectable> zzzqsw@gmail.com</text>
+      <text selectable> zzzqsw@126.com</text>
     </view>
     <view class="social">
       <image src="/utils/images/about/social_github.png"></image>
