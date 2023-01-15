@@ -164,8 +164,6 @@ Page({
    * 更换至挑战模式
    */
   async changeScreen() {
-    // 因服务器到期原因，暂时屏蔽调改功能
-    // this.test();
     try {
       let {
         letterOrWord,
@@ -288,31 +286,36 @@ Page({
 
   },
 
+  /**
+   * 收藏
+   */
   async collect() {
-    try {
-      let word_collection = this.data.wordList[0];
-      const {
-        openid
-      } = this.data;
-      let timestamp = new Date().getTime();
-      timestamp = this.formatDate(timestamp);
-      word_collection = { ...word_collection,
-        openid,
-        timestamp
-      };
-      const res = await request({
-        url: 'collect/word',
-        method: 'POST',
-        data: word_collection
-      });
-      await showToast({
-        title: res
-      });
-    } catch (error) {
-      await showModal({
-        content: error
-      });
-    }
+    // mongoDB暂定使用
+    this.test();
+    // try {
+    //   let word_collection = this.data.wordList[0];
+    //   const {
+    //     openid
+    //   } = this.data;
+    //   let timestamp = new Date().getTime();
+    //   timestamp = this.formatDate(timestamp);
+    //   word_collection = { ...word_collection,
+    //     openid,
+    //     timestamp
+    //   };
+    //   const res = await request({
+    //     url: 'collect/word',
+    //     method: 'POST',
+    //     data: word_collection
+    //   });
+    //   await showToast({
+    //     title: res
+    //   });
+    // } catch (error) {
+    //   await showModal({
+    //     content: error
+    //   });
+    // }
   },
 
   async challengeBlank() {

@@ -18,7 +18,7 @@ page {
 }
 
 .boardbtn {
-  width: 150rpx;
+  width: 200rpx;
   height: 100rpx;
   background: rgb(216, 213, 233);
   margin: 20rpx;
@@ -26,6 +26,7 @@ page {
   line-height: 100rpx;
   padding: 5rpx;
   border-radius: 30rpx;
+  font-size: 42rpx;
 }
 
 .boardbtn:active {
@@ -51,7 +52,7 @@ page {
   text-align: center;
   line-height: 136rpx;
   border-radius: 170rpx;
-  font-size: 46rpx;
+  font-size: 52rpx;
   font-weight: bold;
 }
 

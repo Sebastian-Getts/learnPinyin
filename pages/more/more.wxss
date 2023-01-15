@@ -24,6 +24,7 @@ page {
 }
 .wordCard .jijie {
   margin: 10rpx 0;
+  font-size: 30rpx;
 }
 .wordCard .jijie .jijie_item {
   margin: 10rpx;
