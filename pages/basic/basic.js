@@ -5,6 +5,7 @@ Page({
    */
   data: {
     list: [],
+    // 韵母
     list1: [{
       name: "a",
       value: "啊",
@@ -38,12 +39,32 @@ Page({
       value: "诶",
       flag: true
     }, {
+      name: "ui",
+      value: "威",
+      flag: true
+    }, {
       name: "ao",
       value: "熬",
       flag: true
     }, {
       name: "ou",
       value: "欧",
+      flag: true
+    }, {
+      name: "iu",
+      value: "优",
+      flag: true
+    }, {
+      name: "ie",
+      value: "耶",
+      flag: true
+    }, {
+      name: "üe",
+      value: "约",
+      flag: true
+    }, {
+      name: "er",
+      value: "儿",
       flag: true
     }, {
       name: "an",
@@ -54,72 +75,16 @@ Page({
       value: "恩",
       flag: true
     }, {
-      name: "ia",
-      value: "呀",
-      flag: true
-    }, {
-      name: "ie",
-      value: "耶",
-      flag: true
-    }, {
-      name: "iao",
-      value: "腰",
-      flag: true
-    }, {
-      name: "iou",
-      value: "优",
-      flag: true
-    }, {
-      name: "ian",
-      value: "烟",
-      flag: true
-    }, {
       name: "in",
       value: "因",
       flag: true
     }, {
-      name: "iang",
-      value: "央",
-      flag: true
-    }, {
-      name: "ing",
-      value: "英",
-      flag: true
-    }, {
-      name: "iong",
-      value: "雍",
-      flag: true
-    }, {
-      name: "ua",
-      value: "蛙",
-      flag: true
-    }, {
-      name: "uo",
-      value: "窝",
-      flag: true
-    }, {
-      name: "uai",
-      value: "外",
-      flag: true
-    }, {
-      name: "uen",
+      name: "un",
       value: "温",
       flag: true
     }, {
-      name: "uang",
-      value: "汪",
-      flag: true
-    }, {
-      name: "ueng",
-      value: "翁",
-      flag: true
-    }, {
-      name: "üe",
-      value: "约",
-      flag: true
-    }, {
-      name: "üan",
-      value: "冤",
+      name: "ün",
+      value: "晕",
       flag: true
     }, {
       name: "ang",
@@ -130,18 +95,15 @@ Page({
       value: "更",
       flag: true
     }, {
+      name: "ing",
+      value: "英",
+      flag: true
+    }, {
       name: "ong",
       value: "红",
       flag: true
-    }, {
-      name: "uei",
-      value: "威",
-      flag: true
-    }, {
-      name: "uan",
-      value: "弯",
-      flag: true
     }],
+    // 声母
     list2: [{
       name: "b",
       value: "玻",
@@ -226,7 +188,16 @@ Page({
       name: "s",
       value: "思",
       flag: true
+    }, {
+      name: "y",
+      value: "医",
+      flag: true
+    }, {
+      name: "w",
+      value: "乌",
+      flag: true
     }],
+    // 大小写
     list3: [{
       name: "a",
       value: "A",
