@@ -1,5 +1,5 @@
 <view wx:if="{{letterOrWord}}" class="screen" style="background: {{bingo==true?'rgb(81, 117, 109)':''}}">
-  <view class="singleLetter" wx:key="index" wx:for="{{exam}}" style="color:white;background:{{item.value==true? 'rgb(81, 117, 109)':'rgb(86, 81, 117)'}} ">
+  <view class="singleLetter" wx:key="index" wx:for="{{exam}}" style="color:white;background:{{item.value==true? 'rgb(81, 117, 109)': checkLetter[index]==null? '' : 'rgb(216, 75, 75)'}} ">
     {{item.name}}
   </view>
 </view>

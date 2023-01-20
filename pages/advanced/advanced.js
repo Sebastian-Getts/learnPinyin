@@ -16,11 +16,13 @@ Page({
   data: {
     list: [",/。", "ABC", "DEF", "GHI", "JKL", "MNO", "PQRS", "TUV", "WXYZ"],
     list2: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"],
+    list3: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"],
     qwe: ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
     asd: ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
     zxc: ['z', 'x', 'c', 'v', 'b', 'n', 'm'],
     exam: [],
     bingo: false,
+    checkLetter: [],
     letterOrWord: true,
     tips: false,
     testSuccess: false,
@@ -36,8 +38,9 @@ Page({
    */
   boardbtn(e) {
     let v = e.target.id;
-    v = v.toUpperCase();
+    v = v.toLowerCase();
     const exam = this.data.exam;
+    const checkLetter = this.data.checkLetter;
     var target;
     var i = 0;
     let flag = false;
@@ -48,10 +51,11 @@ Page({
         if (i == (exam.length - 1)) {
           flag = true;
         }
+        checkLetter[i] = true;
         break;
       }
     }
-
+    // 全部正确，用户按了其他按钮
     if (target == undefined) {
       wx.showToast({
         title: '全部正确！请按空格键~',
@@ -63,6 +67,7 @@ Page({
     } else {
       //匹配按键字母
       for (var j = 0; j < v.length; j++) {
+        // console.log(v[j] + ", targt: " + target);
         if (v[j] == target) {
           exam[i].value = true; //更改判断标识
           this.setData({
@@ -72,7 +77,8 @@ Page({
             var that = this;
             setTimeout(function() {
               that.setData({
-                bingo: flag
+                bingo: flag,
+                checkLetter: []
               })
             }, 200); //延迟时间 这里是1秒
             setTimeout(function() {
@@ -80,10 +86,18 @@ Page({
             }, 1000)
           }
           return;
-        } else {
-          console.log("you choose the wrong answer~")
         }
       }
+      // 九键中遍历了所有的字母 还是错的：
+      this.setData({
+        checkLetter: checkLetter,
+      });
+      var that = this;
+      setTimeout(function() {
+        that.setData({
+          checkLetter: [],
+        });
+      }, 250);
     }
   },
 
@@ -102,7 +116,7 @@ Page({
   },
 
   generate() {
-    var list = this.getRandomArrayElements(this.data.list2);
+    var list = this.getRandomArrayElements(this.data.list3);
     var target = [];
     for (var i = 0; i < list.length; i++) {
       var map = {};
@@ -237,6 +251,10 @@ Page({
     });
   },
 
+  /**
+   * 判断用户按键字母是否正确
+   * @param {*} e 
+   */
   async challengeBoard(e) {
     // 获取键盘的字母。
     let v = e.target.id;
