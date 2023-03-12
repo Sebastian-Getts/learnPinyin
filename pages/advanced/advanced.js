@@ -197,9 +197,7 @@ Page({
   },
 
   async getNewWord() {
-    const {
-      wordList
-    } = await request({
+    const wordList = await request({
       url: "pickOne/word/5",
       method: "GET"
     });

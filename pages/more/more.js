@@ -11,7 +11,6 @@ Page({
 
   onLoad: function (options) {
     const { encode } = options;
-    console.log(encode);
     this.getXinhua(encode);
   },
 
