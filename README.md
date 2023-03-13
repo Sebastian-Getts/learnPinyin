@@ -33,9 +33,14 @@
 
 :ballot_box_with_check: 对感兴趣的汉字收藏
 
-:ballot_box_with_check: 管理收藏的文字（删除）
+~~:ballot_box_with_check: 管理收藏的文字（删除）~~
 
-:ballot_box: 收藏的文字按日期查询
+~~:ballot_box: 收藏的文字按日期查询~~
+
+敬请期待：
+- 发音
+- 正向认识汉字与拼音
+……
 
 ## 目的
 
