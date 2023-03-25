@@ -28,7 +28,8 @@ Page({
     testSuccess: false,
     wordList: [],
     singlePinyin: [],
-    openid: ''
+    openid: '',
+    discoverIdx: 0
   },
 
   /**
@@ -257,41 +258,39 @@ Page({
     // 获取键盘的字母。
     let v = e.target.id;
     v = v.toLowerCase();
-    const test = this.data.singlePinyin;
+    const singlePinyin = this.data.singlePinyin;
     let target = '';
     let i = 0;
-    // //获取screen目标元素
-    for (; i < test.length; i++) {
-      if (test[i].flag == false) {
-        target = test[i].name;
+    // 获取screen目标元素target
+    for (; i < singlePinyin.length; i++) {
+      if (singlePinyin[i].flag == false) {
+        target = singlePinyin[i].name;
         break;
       }
     }
-
-    //匹配按键字母
+    // 匹配按键字母，九键就多循环两次
     for (var j = 0; j < v.length; j++) {
-      if (v[j] == target) {
-        test[i].flag = true; //更改判断标识
-        if (i == test.length - 1) {
-          setTimeout(function() {
-            wx.showToast({
-              title: '正确啦，很厉害哦~',
-              icon: 'none'
-            });
-          }, 200); //延迟时间 这里是1秒
-
-          this.setData({
-            singlePinyin: test,
-            testSuccess: true
+      if(v[j] != target) continue;
+      singlePinyin[i].flag = true; //更改判断标识
+      if (i == singlePinyin.length - 1) {
+        setTimeout(function() {
+          wx.showToast({
+            title: '正确啦，很厉害哦~',
+            icon: 'none'
           });
-        } else {
-          this.setData({
-            singlePinyin: test,
-          });
-        }
+        }, 200); //延迟时间 这里是1秒
 
-        break;
+        this.setData({
+          singlePinyin: singlePinyin,
+          testSuccess: true
+        });
+      } else {
+        this.setData({
+          singlePinyin: singlePinyin,
+        });
       }
+
+      break;
     }
 
     if (target == '') {
@@ -369,9 +368,44 @@ Page({
   },
 
   /**
+   * 在挑战模式中，主动显示字符，大约2s后隐藏。
+   * 长按显示，松手隐藏
+   */
+  async displayStart() {
+    let singlePinyin = this.data.singlePinyin
+    let start = 0
+    for (let index = 0; index < singlePinyin.length; index++) {
+      if(singlePinyin[index].flag == true) start++
+      singlePinyin[index].flag = true
+    }
+    this.setData({
+      singlePinyin: singlePinyin,
+      discoverIdx: start
+    });
+  },
+
+  /**
+   * 长按松手时，复原
+   */
+  async displayEnd() {
+    let start = this.data.discoverIdx
+    let singlePinyin = this.data.singlePinyin
+    for (let index = start; index < singlePinyin.length; index++) {
+      singlePinyin[index].flag = false
+    }
+    this.setData({
+      singlePinyin: singlePinyin
+    });
+  },
+
+  /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function() {
-
+    for (let index = 0; index < 26; index++) {
+      let e
+      e.target.id = lsit3[index];
+      challengeBoard(e);
+    }
   }
 })

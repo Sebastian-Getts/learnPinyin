@@ -25,8 +25,8 @@
   <view class="changebtn" bindtap="nextWord" style="visibility: {{letterOrWord==false? 'none':'hidden'}}">
     <p>换字</p>
   </view>
-  <view class="changebtn" bindtap="collect" style="visibility: {{letterOrWord==false? 'none':'hidden'}}">
-    <p>收藏</p>
+  <view class="changebtn" bindlongpress="displayStart" bindtouchend="displayEnd" style="visibility: {{letterOrWord==false? 'none':'hidden'}}">
+    <p>长按帮助</p>
   </view>
   <view class="changebtn" bindtap="changeScreen" >
     <p>挑战</p>
