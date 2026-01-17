@@ -47,7 +47,7 @@
     "minifyWXML": true
   },
   "compileType": "miniprogram",
-  "libVersion": "2.13.1",
+  "libVersion": "3.13.2",
   "appid": "wxad52309b82fd0e93",
   "projectname": "learnPinyin",
   "simulatorType": "wechat",

@@ -1,5 +1,6 @@
 {
   "navigationBarTitleText": "了解更多",
-  "navigationBarBackgroundColor": "#cccccc",
+  "navigationBarBackgroundColor": "#667eea",
+  "navigationBarTextStyle": "white",
   "usingComponents": {}
 }
