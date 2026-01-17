@@ -445,19 +445,14 @@ Page({
   },
 
   displaybtn() {
-    if (this.data.display == false) {
+    var display = !this.data.display;
+    // 当展开时，需要先复原所有卡片到正面状态
+    if (display) {
       this.resume(true);
     }
     this.setData({
-      display: !this.data.display
+      display: display
     })
-  },
-
-  displaybtn_test() {
-    wx.showToast({
-      title: '功能开发中~',
-      icon: 'none'
-    });
   },
 
 

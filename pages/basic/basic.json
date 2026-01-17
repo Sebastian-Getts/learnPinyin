@@ -1,5 +1,6 @@
 {
   "navigationBarTitleText": "轻 松 学",
-  "navigationBarBackgroundColor": "#E7BEE0",
+  "navigationBarBackgroundColor": "#667eea",
+  "navigationBarTextStyle": "white",
   "usingComponents": {}
 }

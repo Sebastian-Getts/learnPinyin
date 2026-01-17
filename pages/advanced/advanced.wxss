@@ -1,5 +1,20 @@
 page {
-  background: #e7bee0;
+  background: linear-gradient(180deg, #f5f7fa 0%, #e8ecf3 40%, #c3cfe2 80%, #a8b5d0 100%);
+  min-height: 100vh;
+  transition: background 0.3s ease;
+}
+
+/* 页面包装器 - 设置为固定布局，防止滚动 */
+.page-wrapper {
+  min-height: 100vh;
+  padding-bottom: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+/* 挑战模式下，为页面底部添加padding，避免键盘遮挡按钮 */
+.page-wrapper-challenge {
+  padding-bottom: 380rpx;
 }
 
 .container {
@@ -11,182 +26,369 @@ page {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
-  background: rgb(86, 81, 117);
+  background: linear-gradient(180deg, #e8ecf3 0%, #c3cfe2 50%, #a8b5d0 100%);
   width: 100%;
   bottom: 0;
   position: fixed;
+  box-shadow: 0 -4rpx 20rpx rgba(163, 181, 208, 0.3);
+  padding-top: 20rpx;
+  padding-bottom: env(safe-area-inset-bottom);
+  z-index: 10;
 }
 
 .boardbtn {
   width: 200rpx;
   height: 100rpx;
-  background: rgb(216, 213, 233);
+  background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
   margin: 20rpx;
   text-align: center;
   line-height: 100rpx;
   padding: 5rpx;
   border-radius: 30rpx;
   font-size: 42rpx;
+  color: #4a5568;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.15);
+  transition: all 0.2s ease;
+  font-weight: 500;
 }
 
 .boardbtn:active {
-  background: rgb(10, 92, 158);
-  color: aliceblue;
+  background: linear-gradient(135deg, #a8b5d0 0%, #c3cfe2 100%);
+  color: #4a5568;
+  transform: scale(0.95);
+  box-shadow: 0 2rpx 8rpx rgba(163, 181, 208, 0.4);
+}
+
+/* 按键高亮特效 - 全键模式 */
+.boardbtn.key-highlight {
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+  color: #ffffff;
+  box-shadow: 0 6rpx 20rpx rgba(255, 215, 0, 0.6),
+              0 0 40rpx rgba(255, 215, 0, 0.4),
+              inset 0 2rpx 8rpx rgba(255, 255, 255, 0.3);
+  animation: keyHighlightPulse 1s ease-in-out infinite;
+  transform: scale(1.05);
+  border: 3rpx solid rgba(255, 215, 0, 0.8);
+  z-index: 1;
+  position: relative;
+}
+
+@keyframes keyHighlightPulse {
+  0%, 100% {
+    box-shadow: 0 6rpx 20rpx rgba(255, 215, 0, 0.6),
+                0 0 40rpx rgba(255, 215, 0, 0.4);
+    transform: scale(1.05);
+  }
+  50% {
+    box-shadow: 0 8rpx 30rpx rgba(255, 215, 0, 0.8),
+                0 0 60rpx rgba(255, 215, 0, 0.6);
+    transform: scale(1.1);
+  }
 }
 
 .screen {
-  background: rgb(86, 81, 117);
+  background: linear-gradient(135deg, #667eea 0%, #6b7fd8 50%, #764ba2 100%);
   width: 92%;
-  border-radius: 50rpx;
+  border-radius: 40rpx;
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-around;
-  padding: 16rpx;
-  margin: auto;
-  height: 272rpx;
+  justify-content: center;
+  align-items: center;
+  padding: 30rpx 20rpx;
+  min-height: 300rpx;
+  box-shadow: 0 8rpx 24rpx rgba(102, 126, 234, 0.25);
+  position: fixed;
+  top: 30rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  transition: all 0.3s ease;
 }
 
 .singleLetter {
-  /* background: rgb(44, 68, 39); */
   width: 180rpx;
   text-align: center;
   line-height: 136rpx;
   border-radius: 170rpx;
   font-size: 90rpx;
   font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  margin: 15rpx;
 }
 
 .screenChalenge {
-  background: rgb(86, 81, 117);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   width: 92%;
-  border-radius: 50rpx;
+  border-radius: 40rpx;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  padding: 16rpx;
-  margin: auto;
-  height: 272rpx;
+  justify-content: flex-start;
+  padding: 30rpx 20rpx;
+  min-height: 320rpx;
+  max-height: 420rpx;
+  box-shadow: 0 8rpx 24rpx rgba(102, 126, 234, 0.25);
+  position: fixed;
+  top: 30rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  transition: all 0.3s ease;
+  /* 优化背景渐变，与页面背景自然衔接 */
+  background: linear-gradient(135deg, #667eea 0%, #6b7fd8 50%, #764ba2 100%);
+}
+
+/* 挑战模式容器 */
+.challengeContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 280rpx;
+}
+
+/* 挑战模式返回按钮 - 移到中间部分 */
+.challengeHeader {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+/* 中间部分的返回按钮样式 */
+.midControll .backBtnText {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  color: white;
+  font-weight: 500;
+  width: 100%;
+}
+
+.midControll .backBtnText .backIcon {
+  font-size: 36rpx;
+  color: white;
+  margin-right: 6rpx;
+  font-weight: bold;
+  line-height: 1;
 }
 
 .screenChalenge .more {
   font-size: 36rpx;
-  color: rgb(162, 170, 187);
+  color: rgba(255, 255, 255, 0.8);
   text-align: right;
   margin-right: 20rpx;
+  margin-top: 20rpx;
+  padding: 10rpx 20rpx;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  align-self: flex-end;
 }
 
 .screenChalenge .more:active {
-  color: rgb(0, 132, 255);
+  color: #ffd700;
+  transform: translateX(-4rpx);
 }
 
 .singleWord {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 80%;
+  justify-content: center;
+  flex: 1;
+  min-height: 240rpx;
 }
 
 .singleWord .word {
-  line-height: 136rpx;
+  line-height: 140rpx;
   border-radius: 170rpx;
-  font-size: 70rpx;
+  font-size: 80rpx;
   font-weight: bold;
   display: flex;
   color: white;
+  text-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.3);
+  margin-bottom: 20rpx;
+  min-height: 120rpx;
+  align-items: center;
+  justify-content: center;
 }
 
 .singleWord .pinyin {
   line-height: 136rpx;
-  border-radius: 170rpx;
+  border-radius: 30rpx;
   display: flex;
   font-size: 50rpx;
   width: 50%;
   height: 130rpx;
   align-items: center;
   justify-content: center;
-  background-color: cornflowerblue;
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  color: white;
+  box-shadow: 0 4rpx 12rpx rgba(79, 172, 254, 0.3);
+  font-weight: 500;
 }
 
 .singleWord .testPinyin {
-  /* line-height     : 136rpx; */
-  border-radius: 170rpx;
+  border-radius: 30rpx;
   display: flex;
   font-size: 60rpx;
-  width: 80%;
+  width: 85%;
+  min-width: 400rpx;
   align-items: center;
   justify-content: space-around;
-  background-color: rgb(89, 100, 128);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.15) 100%);
+  backdrop-filter: blur(10rpx);
+  border: 2rpx solid rgba(255, 255, 255, 0.3);
+  padding: 20rpx 15rpx;
+  margin-top: 20rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  overflow: visible;
+  position: relative;
+  box-sizing: border-box;
+  /* 确保容器大小固定，不受子元素transform影响 */
+  contain: layout style;
 }
 
 .singleWord .testPinyin .singleTestLetter {
   height: 66%;
-  padding: 4rpx;
+  padding: 4rpx 8rpx;
   display: flex;
   align-items: center;
-  color: rgb(89, 100, 128);
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 400;
+  transition: all 0.4s ease;
+  border-radius: 8rpx;
+  min-width: 40rpx;
+  position: relative;
+  transform-origin: center center;
+}
+
+.singleWord .testPinyin .singleTestLetter-correct {
+  color: #FFD700 !important;
+  font-weight: 700;
+  font-size: 60rpx;
+  text-shadow: 0 0 20rpx rgba(255, 215, 0, 0.8),
+               0 0 40rpx rgba(255, 215, 0, 0.5),
+               0 2rpx 8rpx rgba(0, 0, 0, 0.3);
+  transform: scale(1.15);
+  background: rgba(255, 215, 0, 0.15);
+  border: 2rpx solid rgba(255, 215, 0, 0.4);
+  animation: letterCorrect 0.5s ease-out;
+  transform-origin: center center;
+  z-index: 1;
+}
+
+@keyframes letterCorrect {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.25);
+  }
+  100% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
 }
 
 .midControll {
-  margin: 30rpx 10rpx;
+  margin: 0;
+  padding: 0 10rpx;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
+  position: fixed;
+  left: 0;
+  right: 0;
+  /* 统一按钮位置：题目底部约330-450rpx（识键盘模式最小300rpx，挑战模式最大420rpx），键盘高度约350-450rpx
+   * 按钮统一放在500rpx，确保在题目和键盘中间，不与它们重叠
+   * 识键盘模式：题目底部约330rpx，按钮500rpx（间距170rpx），按钮底部640rpx
+   * 挑战模式：题目底部约450rpx，按钮500rpx（间距50rpx），按钮底部640rpx
+   * 键盘顶部约950-1050rpx（假设屏幕1400rpx，键盘350-450rpx高），不会与按钮重叠 */
+  top: 500rpx;
+  z-index: 11;
+  background: transparent;
+}
+
+/* 挑战模式下，按钮位置与识键盘模式保持一致 */
+.midControll-challenge {
+  top: 500rpx;
 }
 
 .changebtn {
-  background: radial-gradient(50px, rgb(124, 138, 199), rgb(86, 81, 117));
-  border: 2rpx solid grey;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: 3rpx solid rgba(255, 255, 255, 0.3);
   border-radius: 70rpx;
   display: flex;
   width: 140rpx;
   height: 140rpx;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 6rpx 16rpx rgba(102, 126, 234, 0.3);
+  transition: all 0.2s ease;
+  color: white;
+  font-weight: 500;
 }
 
 .changebtn:active {
-  background: rgb(124, 138, 199);
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
   color: white;
+  transform: scale(0.95);
+  box-shadow: 0 3rpx 10rpx rgba(102, 126, 234, 0.4);
 }
 
 .keyboard2 {
   display: flex;
   flex-direction: column;
-  background: rgb(86, 81, 117);
+  background: linear-gradient(180deg, #e8ecf3 0%, #c3cfe2 50%, #a8b5d0 100%);
   width: 100%;
   bottom: 0;
   position: fixed;
   align-items: center;
+  box-shadow: 0 -4rpx 20rpx rgba(163, 181, 208, 0.3);
+  padding-bottom: env(safe-area-inset-bottom);
+  z-index: 10;
 }
 
 .keyboard2 .firstline {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  margin-top: 56rpx;
+  margin-top: 40rpx;
 }
 
 .keyboard2 .firstline .twentysixbtn {
-  background: rgb(210, 211, 205);
-  margin: 0rpx 12rpx;
+  background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+  margin: 0rpx 10rpx;
   font-size: 44rpx;
   height: 90rpx;
   width: 52rpx;
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #4a5568;
+  box-shadow: 0 3rpx 10rpx rgba(0, 0, 0, 0.15);
+  font-weight: 500;
+  transition: all 0.2s ease;
 }
 
 .keyboard2 .firstline .cap {
-  background: rgb(83, 83, 82);
-  margin: 0rpx 20rpx;
+  background: linear-gradient(135deg, #b8c5d8 0%, #a8b5d0 100%);
+  margin: 0rpx 15rpx;
   font-size: 36rpx;
   height: 84rpx;
   width: 74rpx;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 3rpx 10rpx rgba(163, 181, 208, 0.25);
+  transition: all 0.2s ease;
+  border: 2rpx solid rgba(200, 210, 225, 0.5);
 }
 
 .keyboard2 .firstline .cap image {
@@ -197,9 +399,13 @@ page {
 .keyboard2 .firstline .boardbtn2 {
   display: flex;
   width: 50%;
-  background: rgb(210, 211, 205);
+  background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
   align-items: center;
   justify-content: center;
+  color: #4a5568;
+  box-shadow: 0 3rpx 10rpx rgba(0, 0, 0, 0.15);
+  font-weight: 500;
+  transition: all 0.2s ease;
 }
 
 .keyboard2 .lastline {
@@ -208,7 +414,8 @@ page {
   width: 100%;
   justify-content: space-between;
   margin-bottom: 20rpx;
-  margin-top: 56rpx;
+  margin-top: 40rpx;
+  padding: 0 10rpx;
 }
 
 .keyboard2 .lastline .boardbtn2 {
@@ -216,21 +423,30 @@ page {
   width: 60%;
   align-items: center;
   justify-content: center;
-  background: rgb(210, 211, 205);
+  background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+  color: #4a5568;
+  box-shadow: 0 3rpx 10rpx rgba(0, 0, 0, 0.15);
+  font-weight: 500;
+  transition: all 0.2s ease;
 }
 
 .keyboard2 .lastline .check {
-  background: rgb(83, 83, 82);
+  background: linear-gradient(135deg, #b8c5d8 0%, #a8b5d0 100%);
   font-size: 36rpx;
   height: 84rpx;
   width: 74rpx;
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #4a5568;
+  box-shadow: 0 3rpx 10rpx rgba(163, 181, 208, 0.25);
+  transition: all 0.2s ease;
+  font-weight: 500;
+  border: 2rpx solid rgba(200, 210, 225, 0.5);
 }
 
 .keyboard2 .lastline .check2 {
-  background: rgb(25, 68, 160);
+  background: linear-gradient(135deg, #c3cfe2 0%, #a8b5d0 100%);
   font-size: 36rpx;
   height: 84rpx;
   width: 90rpx;
@@ -238,6 +454,11 @@ page {
   align-items: center;
   justify-content: center;
   margin-right: 10rpx;
+  color: #4a5568;
+  box-shadow: 0 3rpx 10rpx rgba(163, 181, 208, 0.25);
+  transition: all 0.2s ease;
+  font-weight: 500;
+  border: 2rpx solid rgba(200, 210, 225, 0.5);
 }
 
 .keyboard2 .lastline .check:first-child {
@@ -245,20 +466,162 @@ page {
 }
 
 .keyboard2 .firstline view, .lastline view {
-  border-radius: 12rpx;
+  border-radius: 16rpx;
 }
 
-.keyboard2 .firstline view:active, .keyboard2 .lastline .boardbtn2:active {
-  background: rgb(92, 75, 58);
-  color: aliceblue;
+.keyboard2 .firstline .twentysixbtn:active, .keyboard2 .lastline .boardbtn2:active {
+  background: linear-gradient(135deg, #a8b5d0 0%, #c3cfe2 100%);
+  color: #4a5568;
+  transform: scale(0.95);
+  box-shadow: 0 2rpx 8rpx rgba(163, 181, 208, 0.4);
+}
+
+/* 按键高亮特效 - 九键模式（全键） */
+.keyboard2 .firstline .twentysixbtn.key-highlight {
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+  color: #ffffff;
+  box-shadow: 0 4rpx 16rpx rgba(255, 215, 0, 0.6),
+              0 0 30rpx rgba(255, 215, 0, 0.4),
+              inset 0 2rpx 6rpx rgba(255, 255, 255, 0.3);
+  animation: keyHighlightPulseSmall 1s ease-in-out infinite;
+  transform: scale(1.08);
+  border: 2rpx solid rgba(255, 215, 0, 0.8);
+  z-index: 1;
+  position: relative;
+}
+
+@keyframes keyHighlightPulseSmall {
+  0%, 100% {
+    box-shadow: 0 4rpx 16rpx rgba(255, 215, 0, 0.6),
+                0 0 30rpx rgba(255, 215, 0, 0.4);
+    transform: scale(1.08);
+  }
+  50% {
+    box-shadow: 0 6rpx 24rpx rgba(255, 215, 0, 0.8),
+                0 0 50rpx rgba(255, 215, 0, 0.6);
+    transform: scale(1.12);
+  }
 }
 
 .keyboard2 .firstline .cap:active, .keyboard2 .lastline .check:active {
-  background: rgb(92, 75, 58);
-  color: aliceblue;
+  background: linear-gradient(135deg, #a8b5d0 0%, #c3cfe2 100%);
+  color: #4a5568;
+  transform: scale(0.95);
+  box-shadow: 0 2rpx 8rpx rgba(163, 181, 208, 0.3);
 }
 
 .keyboard2 .lastline .check2:active {
-  background: rgb(92, 75, 58);
-  color: aliceblue;
+  background: linear-gradient(135deg, #a8b5d0 0%, #c3cfe2 100%);
+  color: #4a5568;
+  transform: scale(0.95);
+  box-shadow: 0 2rpx 8rpx rgba(163, 181, 208, 0.3);
+}
+
+/* 成功动画样式 - 大气展示 */
+.successAnimation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8rpx);
+  z-index: 99999;
+  animation: fadeIn 0.3s ease-out;
+  pointer-events: auto;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.successAnimation .successIcon {
+  width: 200rpx;
+  height: 200rpx;
+  line-height: 200rpx;
+  text-align: center;
+  font-size: 140rpx;
+  font-weight: bold;
+  color: #ffffff;
+  background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+  border-radius: 50%;
+  box-shadow: 0 12rpx 40rpx rgba(17, 153, 142, 0.5),
+              0 0 80rpx rgba(56, 239, 125, 0.3),
+              inset 0 4rpx 12rpx rgba(255, 255, 255, 0.3);
+  animation: scaleIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s both,
+             pulse 1.5s ease-in-out 0.7s infinite;
+  margin-bottom: 40rpx;
+  border: 6rpx solid rgba(255, 255, 255, 0.8);
+}
+
+@keyframes scaleIn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 12rpx 40rpx rgba(17, 153, 142, 0.5),
+                0 0 80rpx rgba(56, 239, 125, 0.3);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 16rpx 50rpx rgba(17, 153, 142, 0.6),
+                0 0 100rpx rgba(56, 239, 125, 0.4);
+  }
+}
+
+.successAnimation .successText {
+  font-size: 72rpx;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 20rpx;
+  text-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.4),
+               0 0 40rpx rgba(255, 255, 255, 0.3);
+  animation: slideUp 0.5s ease-out 0.4s both;
+  letter-spacing: 4rpx;
+  background: linear-gradient(135deg, #ffffff 0%, #ffd700 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.successAnimation .successSubText {
+  font-size: 36rpx;
+  color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+  font-weight: 500;
+  animation: slideUp 0.5s ease-out 0.6s both;
+  text-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.3);
 }

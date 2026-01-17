@@ -1,0 +1,24 @@
+{
+  "name": "learnpinyin",
+  "version": "1.0.0",
+  "description": "一款简单的学习拼音的工具。",
+  "homepage": "https://github.com/Sebastian-Getts/learnPinyin#readme",
+  "bugs": {
+    "url": "https://github.com/Sebastian-Getts/learnPinyin/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sebastian-Getts/learnPinyin.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "miniprogram-sm-crypto": "^0.4.0",
+    "pinyin-pro": "^3.27.0"
+  }
+}

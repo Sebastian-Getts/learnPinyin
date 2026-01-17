@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "我的收藏",
-  "navigationBarBackgroundColor": "#FFE4E1",
+  "navigationBarBackgroundColor": "#667eea",
+  "navigationBarTextStyle": "white",
   "usingComponents": {
     "swider-left": "../../components/slide_left/index"
   }

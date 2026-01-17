@@ -1,42 +1,130 @@
 page {
-  background: rgba(208, 234, 236, 0.808);
+  background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf3 30%, #e0e5f2 60%, #d4d9ed 100%);
+  min-height: 100vh;
 }
 
 .box {
   display: flex;
   flex-direction: column;
-  margin: 20rpx;
+  margin: 30rpx 20rpx;
+  padding: 30rpx;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.9) 100%);
+  border-radius: 30rpx;
+  box-shadow: 0 8rpx 24rpx rgba(102, 126, 234, 0.2),
+              0 0 40rpx rgba(118, 75, 162, 0.1);
+  border: 2rpx solid rgba(102, 126, 234, 0.1);
 }
 
 .line {
   display: flex;
   flex-direction: column;
-  font-size: 40rpx;
-  text-align: cneter;
-  border-bottom: 1rpx solid;
+  font-size: 42rpx;
+  font-weight: 600;
+  text-align: left;
+  color: #4a5568;
+  margin-top: 40rpx;
+  padding-bottom: 15rpx;
+  border-bottom: 2rpx solid rgba(102, 126, 234, 0.2);
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.line:first-child {
+  margin-top: 0;
+  font-size: 52rpx;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 20rpx;
+  padding: 25rpx 30rpx;
+  margin-bottom: 30rpx;
+  box-shadow: 0 6rpx 20rpx rgba(102, 126, 234, 0.3);
+  border: none;
+  text-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.2);
+}
+
+.line:not(:first-child)::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 60rpx;
+  height: 4rpx;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 2rpx;
 }
 
 .box text {
-  margin-top: 30rpx;
+  margin-top: 20rpx;
+  line-height: 1.8;
 }
 
 .content {
   text-indent: 2em;
+  font-size: 32rpx;
+  color: #4a5568;
+  line-height: 1.8;
+  margin-top: 15rpx;
+  padding: 20rpx 20rpx 20rpx 30rpx;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.08) 0%, rgba(118, 75, 162, 0.08) 100%);
+  border-radius: 15rpx;
+  border-left: 5rpx solid #667eea;
+  position: relative;
+  box-shadow: 0 2rpx 8rpx rgba(102, 126, 234, 0.1);
+}
+
+.content::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 5rpx;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 15rpx 0 0 15rpx;
 }
 
 .box image {
   width: 50rpx;
-  height: 40rpx;
-  vertical-align: top;
+  height: 50rpx;
+  vertical-align: middle;
+  margin-right: 15rpx;
+  border-radius: 8rpx;
 }
 
 .contact {
   display: flex;
   flex-direction: column;
-  margin-top: 10rpx;
+  margin-top: 30rpx;
+  padding: 25rpx;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+  border-radius: 20rpx;
+  border: 2rpx solid rgba(102, 126, 234, 0.15);
+  box-shadow: 0 4rpx 12rpx rgba(102, 126, 234, 0.15);
 }
 
 .social {
-  margin-top: 10rpx;
-  font-size: 24rpx;
+  margin-top: 20rpx;
+  font-size: 28rpx;
+  color: #4a5568;
+  display: flex;
+  align-items: center;
+  padding: 18rpx 20rpx;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.8) 100%);
+  border-radius: 15rpx;
+  transition: all 0.2s ease;
+  border: 2rpx solid rgba(102, 126, 234, 0.1);
+  box-shadow: 0 2rpx 6rpx rgba(102, 126, 234, 0.1);
+}
+
+.social:first-child {
+  margin-top: 0;
+}
+
+.social:active {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%);
+  transform: scale(0.98);
+  border-color: rgba(102, 126, 234, 0.3);
+  box-shadow: 0 4rpx 12rpx rgba(102, 126, 234, 0.2);
 }

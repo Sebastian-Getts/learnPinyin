@@ -1,45 +1,54 @@
-<view wx:if="{{letterOrWord}}" class="screen" style="background: {{bingo==true?'rgb(81, 117, 109)':''}}">
-  <view class="singleLetter" wx:key="index" wx:for="{{exam}}" style="color:white;background:{{item.value==true? 'rgb(81, 117, 109)': checkLetter[index]==null? '' : 'rgb(216, 75, 75)'}} ">
+<view class="page-wrapper {{!letterOrWord ? 'page-wrapper-challenge' : ''}}">
+<view wx:if="{{letterOrWord}}" class="screen" style="background: {{bingo==true?'linear-gradient(135deg, #11998e 0%, #38ef7d 100%)':''}}">
+  <view class="singleLetter" wx:key="index" wx:for="{{exam}}" style="color:{{item.value==true?'white':checkLetter[index]==null?'white':'white'}};background:{{item.value==true? 'linear-gradient(135deg, #11998e 0%, #38ef7d 100%)': checkLetter[index]==null? 'rgba(255, 255, 255, 0.2)' : 'linear-gradient(135deg, #ee0979 0%, #ff6a00 100%)'}} ">
     {{item.name}}
   </view>
 </view>
 <view wx:else class="screenChalenge">
-  <view class="singleWord" wx:key="index" wx:for="{{wordList}}" wx:if="{{index==0}}" style="color:{{item.value==true?'white':'black'}};background:{{item.value==true? 'rgb(65, 60, 60)':'rgb(86, 81, 117)'}} ">
-    <view class="word">{{item.word}}</view>
-    <view wx:if="{{tips}}" class="pinyin">{{item.pinyin}}</view>
-    <view wx:else class="testPinyin">
-      <view class="singleTestLetter" wx:for="{{singlePinyin}}" wx:key="index" style="color: {{item.flag==true?'white':'rgb(89, 100, 128)'}}">
-        {{item.name}}
+  <view class="challengeContainer">
+    <view class="singleWord" wx:key="index" wx:for="{{wordList}}" wx:if="{{index==0}}" style="color:{{item.value==true?'white':'white'}};background:{{item.value==true? 'linear-gradient(135deg, #2d3748 0%, #1a202c 100%)':''}} ">
+      <view class="word">{{item.word}}</view>
+      <view wx:if="{{tips}}" class="pinyin">{{item.pinyin}}</view>
+      <view wx:else class="testPinyin">
+        <view class="singleTestLetter {{item.flag ? 'singleTestLetter-correct' : ''}}" wx:for="{{singlePinyin}}" wx:key="index">
+          {{item.name}}
+        </view>
       </view>
     </view>
   </view>
-  <view class="more" bindtap="getmore" style="visibility: {{testSuccess==true? 'none':'hidden'}}">
-    >>更多
-  </view>
 </view>
-<view class="midControll">
+<!-- 成功提示动画 - 移到最外层，确保不被遮挡 -->
+<view class="successAnimation" wx:if="{{showSuccessAnimation}}">
+  <view class="successIcon">✓</view>
+  <view class="successText">太棒了！</view>
+  <view class="successSubText">继续加油~</view>
+</view>
+<view class="midControll {{!letterOrWord ? 'midControll-challenge' : ''}}">
+  <!-- 九键/全键切换按钮 - 始终显示 -->
   <view class="changebtn" bindtap="changekbor">
     <p wx:if='{{showOrNot}}'>九键</p>
     <p wx:else>全键</p>
   </view>
-  <view class="changebtn" bindtap="nextWord" style="visibility: {{letterOrWord==false? 'none':'hidden'}}">
-    <p>换字</p>
+  <!-- 提示按钮 - 始终显示 -->
+  <view class="changebtn" bindtap="displayStart">
+    <p>提示</p>
   </view>
-  <view class="changebtn" bindlongpress="displayStart" bindtouchend="displayEnd" style="visibility: {{letterOrWord==false? 'none':'hidden'}}">
-    <p>长按帮助</p>
-  </view>
-  <view class="changebtn" bindtap="changeScreen" >
-    <p>挑战</p>
+  <!-- 挑战/返回按钮 - 在同一位置，根据模式切换 -->
+  <view class="changebtn" bindtap="changeScreen">
+    <!-- 识键盘模式下的挑战按钮 -->
+    <p wx:if="{{letterOrWord}}">挑战</p>
+    <!-- 挑战模式下的返回按钮 -->
+    <p wx:else>返回</p>
   </view>
 </view>
 <view class="keyboard2" wx:if='{{showOrNot}}'>
   <view class="firstline">
-    <view class="twentysixbtn" wx:for="{{qwe}}" wx:key="index" bindtap="{{letterOrWord==true? 'boardbtn':'challengeBoard'}}" id="{{item}}">
+    <view class="twentysixbtn {{highlightKeyId===item ? 'key-highlight' : ''}}" wx:for="{{qwe}}" wx:key="index" bindtap="{{letterOrWord==true? 'boardbtn':'challengeBoard'}}" id="{{item}}">
       {{item}}
     </view>
   </view>
   <view class="firstline">
-    <view class="twentysixbtn" wx:for="{{asd}}" wx:key="index" bindtap="{{letterOrWord==true? 'boardbtn':'challengeBoard'}}" id="{{item}}">
+    <view class="twentysixbtn {{highlightKeyId===item ? 'key-highlight' : ''}}" wx:for="{{asd}}" wx:key="index" bindtap="{{letterOrWord==true? 'boardbtn':'challengeBoard'}}" id="{{item}}">
       {{item}}
     </view>
   </view>
@@ -47,7 +56,7 @@
     <view class="cap" bindtap="test">
       <image src="/utils/images/shengmu/cap.png"></image>
     </view>
-    <view class="twentysixbtn" wx:for="{{zxc}}" wx:key="index" bindtap="{{letterOrWord==true? 'boardbtn':'challengeBoard'}}" id="{{item}}">
+    <view class="twentysixbtn {{highlightKeyId===item ? 'key-highlight' : ''}}" wx:for="{{zxc}}" wx:key="index" bindtap="{{letterOrWord==true? 'boardbtn':'challengeBoard'}}" id="{{item}}">
       {{item}}
     </view>
     <view class="cap" bindtap="test">
@@ -64,10 +73,11 @@
   </view>
 </view>
 <view class="keyboard" wx:else>
-  <view wx:key="index" wx:for="{{list}}" class="boardbtn" bindtap="{{letterOrWord==true? 'boardbtn':'challengeBoard'}}" id="{{item}}">
+  <view wx:key="index" wx:for="{{list}}" class="boardbtn {{highlightKeyId==item ? 'key-highlight' : ''}}" bindtap="{{letterOrWord==true? 'boardbtn':'challengeBoard'}}" id="{{item}}">
     {{item}}
   </view>
   <view class="boardbtn" bindtap="{{letterOrWord==true?  'blankbtn':'challengeBlank'}}" style="width:500rpx">
     空格
   </view>
+</view>
 </view>

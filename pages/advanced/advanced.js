@@ -9,6 +9,7 @@ import {
 import {
   requestPro
 } from "../../utils/requestPro";
+const { generateRandomWords } = require("../../utils/wordGenerator");
 const app = getApp();
 Page({
 
@@ -29,7 +30,11 @@ Page({
     wordList: [],
     singlePinyin: [],
     openid: '',
-    discoverIdx: 0
+    discoverIdx: 0,
+    showOrNot: false,
+    showSuccessAnimation: false,
+    highlightKeyId: null, // 高亮的按键ID
+    hintTimer: null // 提示定时器
   },
 
   /**
@@ -38,6 +43,15 @@ Page({
    * @returns 
    */
   boardbtn(e) {
+    // 清除高亮
+    if (this.data.hintTimer) {
+      clearTimeout(this.data.hintTimer);
+    }
+    this.setData({
+      highlightKeyId: null,
+      hintTimer: null
+    });
+    
     let v = e.target.id;
     v = v.toLowerCase();
     const exam = this.data.exam;
@@ -152,9 +166,12 @@ Page({
   },
 
   changekbor() {
+    // 确保在挑战模式和识键盘模式下都能切换键盘
+    const newShowOrNot = !this.data.showOrNot;
     this.setData({
-      showOrNot: !this.data.showOrNot
-    })
+      showOrNot: newShowOrNot
+    });
+    console.log('键盘切换:', newShowOrNot ? '九键' : '全键');
   },
 
   async test() {
@@ -187,9 +204,30 @@ Page({
       if (letterOrWord && (wordList.length == 0)) {
         this.getNewWord();
       }
+      const newLetterOrWord = !this.data.letterOrWord;
       this.setData({
-        letterOrWord: !this.data.letterOrWord
-      })
+        letterOrWord: newLetterOrWord
+      });
+      
+      // 动态切换页面背景色，优化视觉衔接
+      const pages = getCurrentPages();
+      const currentPage = pages[pages.length - 1];
+      if (currentPage) {
+        // 使用wx.nextTick确保页面渲染完成后再执行
+        wx.nextTick(() => {
+          if (!newLetterOrWord) {
+            // 切换到挑战模式，添加挑战模式背景
+            wx.setNavigationBarTitle({
+              title: '挑战模式'
+            });
+          } else {
+            // 切换回识键盘模式
+            wx.setNavigationBarTitle({
+              title: '识键盘'
+            });
+          }
+        });
+      }
     } catch (error) {
       await showToast({
         title: error
@@ -198,11 +236,16 @@ Page({
   },
 
   async getNewWord() {
-    const wordList = await request({
-      url: "pickOne/word/5",
-      method: "GET"
-    });
-    this.nextWord_help(wordList);
+    try {
+      // 使用前端生成随机汉字，不再调用后端接口
+      const wordList = generateRandomWords(5);
+      this.nextWord_help(wordList);
+    } catch (error) {
+      console.error('生成随机汉字失败:', error);
+      await showToast({
+        title: '生成失败，请重试'
+      });
+    }
   },
 
   //change target test group
@@ -255,6 +298,15 @@ Page({
    * @param {*} e 
    */
   async challengeBoard(e) {
+    // 清除高亮
+    if (this.data.hintTimer) {
+      clearTimeout(this.data.hintTimer);
+    }
+    this.setData({
+      highlightKeyId: null,
+      hintTimer: null
+    });
+    
     // 获取键盘的字母。
     let v = e.target.id;
     v = v.toLowerCase();
@@ -273,17 +325,28 @@ Page({
       if(v[j] != target) continue;
       singlePinyin[i].flag = true; //更改判断标识
       if (i == singlePinyin.length - 1) {
-        setTimeout(function() {
-          wx.showToast({
-            title: '正确啦，很厉害哦~',
-            icon: 'none'
-          });
-        }, 200); //延迟时间 这里是1秒
-
+        // 全部答对，先显示最后一个字母的正确状态，延迟后再显示成功动画
+        const that = this;
         this.setData({
           singlePinyin: singlePinyin,
           testSuccess: true
         });
+        
+        // 延迟800ms，让用户看到全部拼音都选对了
+        setTimeout(function() {
+          that.setData({
+            showSuccessAnimation: true
+          });
+          
+          // 再延迟1.2秒后自动切换到下一题
+          setTimeout(function() {
+            that.setData({
+              showSuccessAnimation: false
+            });
+            // 自动切换到下一题
+            that.nextWord();
+          }, 1200);
+        }, 800);
       } else {
         this.setData({
           singlePinyin: singlePinyin,
@@ -368,34 +431,105 @@ Page({
   },
 
   /**
-   * 在挑战模式中，主动显示字符，大约2s后隐藏。
-   * 长按显示，松手隐藏
+   * 点击提示按钮，高亮显示需要按的按键
    */
   async displayStart() {
-    let singlePinyin = this.data.singlePinyin
-    let start = 0
-    for (let index = 0; index < singlePinyin.length; index++) {
-      if(singlePinyin[index].flag == true) start++
-      singlePinyin[index].flag = true
+    const { letterOrWord, singlePinyin, exam, showOrNot, hintTimer } = this.data;
+    
+    // 清除之前的定时器
+    if (hintTimer) {
+      clearTimeout(hintTimer);
     }
-    this.setData({
-      singlePinyin: singlePinyin,
-      discoverIdx: start
-    });
+    
+    if (!letterOrWord) {
+      // 挑战模式：找到下一个需要的字母
+      let targetLetter = '';
+      for (let index = 0; index < singlePinyin.length; index++) {
+        if (singlePinyin[index].flag == false) {
+          targetLetter = singlePinyin[index].name;
+          break;
+        }
+      }
+      
+      if (targetLetter) {
+        // 找到对应的按键并高亮
+        this.highlightKey(targetLetter.toLowerCase(), showOrNot);
+      } else {
+        wx.showToast({
+          title: '全部正确了哦~',
+          icon: 'none'
+        });
+      }
+    } else {
+      // 识键盘模式：找到下一个需要的字母
+      const nextIndex = exam.findIndex(item => !item.value);
+      if (nextIndex !== -1) {
+        const nextLetter = exam[nextIndex].name.toLowerCase();
+        // 找到对应的按键并高亮
+        this.highlightKey(nextLetter, showOrNot);
+      } else {
+        wx.showToast({
+          title: '全部正确！请按空格键~',
+          icon: 'none'
+        });
+      }
+    }
   },
 
   /**
-   * 长按松手时，复原
+   * 高亮显示对应的按键
+   * @param {string} letter 目标字母
+   * @param {boolean} isNineKey showOrNot=false时是九键模式，showOrNot=true时是全键模式
+   */
+  highlightKey(letter, isNineKey) {
+    let keyId = null;
+    
+    // isNineKey参数实际传入的是showOrNot的值
+    // showOrNot=true 表示全键模式（26键，keyboard2）
+    // showOrNot=false 表示九键模式（keyboard）
+    
+    if (!isNineKey) {
+      // 九键模式（showOrNot=false）：找到包含该字母的按键组
+      const list = this.data.list;
+      for (let i = 0; i < list.length; i++) {
+        const keyGroup = list[i].toLowerCase();
+        if (keyGroup.includes(letter.toLowerCase())) {
+          keyId = list[i]; // 使用原始格式，包含标点符号，如 ",/。", "ABC"
+          break;
+        }
+      }
+    } else {
+      // 全键模式（showOrNot=true）：使用小写字母匹配（因为keyboard2使用小写字母数组qwe, asd, zxc）
+      keyId = letter.toLowerCase();
+    }
+    
+    if (keyId) {
+      console.log('高亮按键:', keyId, '字母:', letter, '模式:', isNineKey ? '全键' : '九键');
+      this.setData({
+        highlightKeyId: keyId
+      });
+      
+      // 3秒后自动取消高亮
+      const timer = setTimeout(() => {
+        this.setData({
+          highlightKeyId: null,
+          hintTimer: null
+        });
+      }, 3000);
+      
+      this.setData({
+        hintTimer: timer
+      });
+    } else {
+      console.log('未找到匹配的按键，字母:', letter, '模式:', isNineKey ? '全键' : '九键');
+    }
+  },
+
+  /**
+   * 长按松手时，复原（保留用于兼容，实际已改为点击）
    */
   async displayEnd() {
-    let start = this.data.discoverIdx
-    let singlePinyin = this.data.singlePinyin
-    for (let index = start; index < singlePinyin.length; index++) {
-      singlePinyin[index].flag = false
-    }
-    this.setData({
-      singlePinyin: singlePinyin
-    });
+    // 保留空函数以兼容bindtouchend，如果需要可以在这里清除高亮
   },
 
   /**

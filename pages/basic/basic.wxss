@@ -1,5 +1,6 @@
 page {
-  background: #E7BEE0;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
 }
 
 .flex-container {
@@ -13,16 +14,21 @@ page {
   display: flex;
   flex-direction: row;
   align-items: center;
-  background: linear-gradient(120deg, rgb(195, 230, 235), rgb(115, 115, 185));
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   font-size: 26rpx;
+  color: #ffffff;
+  padding: 20rpx 0;
+  box-shadow: 0 4rpx 12rpx rgba(102, 126, 234, 0.25);
 }
 
 .topbar .avatar {
-  height: 30rpx;
-  width: 30rpx;
+  height: 60rpx;
+  width: 60rpx;
   border-radius: 70rpx;
   overflow: hidden;
   margin: 6rpx 20rpx;
+  border: 2rpx solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.15);
 }
 
 .topbar .nickname {
@@ -30,7 +36,7 @@ page {
 }
 
 .flex-item {
-  background-color: rgb(61, 112, 153);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   padding: 5rpx;
   width: 200rpx;
   height: 150rpx;
@@ -42,10 +48,30 @@ page {
   text-align: center;
   backface-visibility: hidden;
   border-radius: 24rpx;
+  box-shadow: 0 8rpx 20rpx rgba(102, 126, 234, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.flex-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
 }
 
 .flex-item:active {
-  background-color: rgb(10, 92, 158);
+  transform: scale(0.95);
+  box-shadow: 0 4rpx 12rpx rgba(102, 126, 234, 0.4);
+}
+
+.flex-item:active::before {
+  left: 100%;
 }
 
 .content {
@@ -53,6 +79,7 @@ page {
   flex-flow: row wrap;
   justify-content: space-around;
   margin-bottom: 20rpx;
+  padding: 20rpx 10rpx;
 }
 
 .back {
@@ -70,98 +97,192 @@ page {
 
 .choose-box {
   display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
-  padding: 0;
+  flex-direction: column;
+  padding: 20rpx 10rpx;
   margin: 0;
   list-style: none;
-  border-bottom: solid 1rpx gray;
-  background: rgb(110, 106, 129);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.95) 100%);
+  box-shadow: 0 4rpx 16rpx rgba(102, 126, 234, 0.2);
+  border-bottom: none;
+  border-radius: 20rpx;
+  margin: 20rpx;
+  border: 2rpx solid rgba(102, 126, 234, 0.15);
+}
+
+.content-choose-wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.divider-line {
+  width: 90%;
+  height: 2rpx;
+  background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.3), transparent);
+  margin: 20rpx auto;
+}
+
+.action-buttons {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  width: 100%;
+  padding: 10rpx 0;
 }
 
 .choose {
-  background-color: rgb(212, 39, 198);
+  background: linear-gradient(135deg, #e8ecf3 0%, #d4d9ed 100%);
   padding: 5rpx;
   width: 200rpx;
   height: 150rpx;
   margin-top: 20rpx;
   line-height: 150rpx;
-  color: white;
+  color: #4a5568;
   font-weight: bold;
   font-size: 56rpx;
   text-align: center;
-  border-radius: 50rpx;
+  border-radius: 24rpx;
   margin-bottom: 10rpx;
+  box-shadow: 0 6rpx 16rpx rgba(102, 126, 234, 0.2);
+  transition: all 0.3s ease;
+  border: 3rpx solid rgba(102, 126, 234, 0.2);
 }
 
-.choose1 {
-  background-color: rgb(212, 157, 39);
-  padding: 5rpx;
-  width: 200rpx;
-  height: 150rpx;
-  margin-top: 20rpx;
-  line-height: 150rpx;
-  color: white;
-  font-weight: bold;
-  font-size: 56rpx;
-  text-align: center;
-  border-radius: 50rpx;
-  margin-bottom: 10rpx;
+.choose:active {
+  transform: translateY(2rpx);
+  box-shadow: 0 3rpx 8rpx rgba(168, 237, 234, 0.5);
 }
 
-.choose2 {
-  background-color: rgb(36, 102, 50);
-  padding: 5rpx;
-  width: 200rpx;
-  height: 150rpx;
-  margin-top: 20rpx;
-  line-height: 150rpx;
-  color: white;
-  font-weight: bold;
-  font-size: 56rpx;
-  text-align: center;
-  border-radius: 50rpx;
-  margin-bottom: 10rpx;
+.choose-active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  color: #ffffff !important;
+  box-shadow: 0 8rpx 24rpx rgba(102, 126, 234, 0.5),
+              0 0 40rpx rgba(118, 75, 162, 0.3) !important;
+  border: 3rpx solid rgba(255, 255, 255, 0.5) !important;
+  transform: scale(1.05);
 }
 
-.choose3 {
-  background-color: rgb(216, 115, 57);
-  padding: 5rpx;
-  width: 200rpx;
-  height: 150rpx;
-  margin-top: 20rpx;
-  line-height: 150rpx;
-  color: white;
-  font-weight: bold;
-  font-size: 56rpx;
-  text-align: center;
-  border-radius: 50rpx;
-  margin-bottom: 10rpx;
+/* 功能按钮样式 */
+.action-btn {
+  position: relative;
+  width: 180rpx;
+  height: 80rpx;
+  margin: 10rpx 5rpx;
+  border-radius: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 2rpx solid rgba(255, 255, 255, 0.4);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.choose1:active {
-  background: rgb(231, 219, 165);
+.action-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
 }
 
-.choose2:active {
-  background: rgb(161, 231, 236);
+.action-btn:active::before {
+  width: 300rpx;
+  height: 300rpx;
 }
 
-.choose3:active {
-  background: rgb(116, 61, 29);
+.action-btn:active {
+  transform: scale(0.95);
+}
+
+.btn-ripple {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.action-btn-shuffle {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.85) 0%, rgba(118, 75, 162, 0.85) 100%);
+  box-shadow: 0 4rpx 12rpx rgba(102, 126, 234, 0.3), inset 0 1rpx 0 rgba(255, 255, 255, 0.3);
+}
+
+.action-btn-shuffle .btn-text {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 32rpx;
+  text-shadow: 0 2rpx 4rpx rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 1;
+}
+
+.action-btn-expand {
+  background: linear-gradient(135deg, rgba(118, 75, 162, 0.85) 0%, rgba(102, 126, 234, 0.85) 100%);
+  box-shadow: 0 4rpx 12rpx rgba(118, 75, 162, 0.3), inset 0 1rpx 0 rgba(255, 255, 255, 0.3);
+}
+
+.action-btn-expand .btn-text {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 32rpx;
+  text-shadow: 0 2rpx 4rpx rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 1;
+}
+
+.action-btn-reset {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.75) 0%, rgba(118, 75, 162, 0.75) 100%);
+  box-shadow: 0 4rpx 12rpx rgba(102, 126, 234, 0.25), inset 0 1rpx 0 rgba(255, 255, 255, 0.3);
+}
+
+.action-btn-reset .btn-text {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 32rpx;
+  text-shadow: 0 2rpx 4rpx rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 1;
 }
 
 .flex-item-display {
   display: flex;
   flex-direction: column;
-  background-color: rgb(92, 63, 69);
-  padding: 5rpx;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 10rpx;
   width: 200rpx;
-  height: 160rpx;
+  height: 180rpx;
   margin-top: 20rpx;
-  line-height: 80rpx;
   color: white;
   font-weight: bold;
-  font-size: 40rpx;
   text-align: center;
+  border-radius: 24rpx;
+  box-shadow: 0 8rpx 20rpx rgba(102, 126, 234, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.flex-item-display .display-value {
+  font-size: 56rpx;
+  line-height: 90rpx;
+  height: 90rpx;
+  width: 100%;
+  border-bottom: 2rpx solid rgba(255, 255, 255, 0.3);
+  box-sizing: border-box;
+}
+
+.flex-item-display .display-name {
+  font-size: 40rpx;
+  line-height: 80rpx;
+  height: 80rpx;
+  width: 100%;
+  color: rgba(255, 255, 255, 0.9);
 }
