@@ -310,6 +310,58 @@ Page({
     display: false
   },
 
+  /**
+   * 播放拼音音频
+   * @param {String} pinyinName 拼音名称，如 "a", "b", "zh", "ai", "ü", "üe", "ün" 等
+   */
+  playPinyinSound(pinyinName) {
+    if (!pinyinName) {
+      return;
+    }
+
+    // 处理特殊字符：ü 对应 v.mp3
+    // ü -> v, üe -> ve, ün -> vn
+    let audioFileName = pinyinName;
+    if (pinyinName.includes('ü')) {
+      audioFileName = pinyinName.replace(/ü/g, 'v');
+    }
+
+    // 构建音频文件路径（相对于项目根目录）
+    const audioPath = `/pinyin_audio/${audioFileName}.mp3`;
+
+    // 如果已有音频上下文，先停止并销毁
+    if (this.audioContext) {
+      this.audioContext.stop();
+      this.audioContext.destroy();
+      this.audioContext = null;
+    }
+
+    // 创建新的音频上下文
+    this.audioContext = wx.createInnerAudioContext();
+    this.audioContext.src = audioPath;
+
+    // 监听播放错误
+    this.audioContext.onError((res) => {
+      console.error('音频播放失败:', res, '路径:', audioPath);
+      // 清理资源
+      if (this.audioContext) {
+        this.audioContext.destroy();
+        this.audioContext = null;
+      }
+    });
+
+    // 监听播放结束，自动销毁
+    this.audioContext.onEnded(() => {
+      if (this.audioContext) {
+        this.audioContext.destroy();
+        this.audioContext = null;
+      }
+    });
+
+    // 播放音频
+    this.audioContext.play();
+  },
+
   reverse(e) {
     if (!this.data.display) {
       var list = this.data.list;
@@ -339,6 +391,10 @@ Page({
           this.setData({
             list: list
           })
+          
+          // 播放拼音音频 - 播放拼音字母（name字段）
+          this.playPinyinSound(map.name);
+          
           break;
         }
       }
@@ -455,6 +511,16 @@ Page({
     })
   },
 
+  /**
+   * 展开模式下点击卡片播放音频
+   */
+  playSoundOnDisplay(e) {
+    const pinyinName = e.currentTarget.dataset.pinyin;
+    if (pinyinName) {
+      this.playPinyinSound(pinyinName);
+    }
+  },
+
 
   formatTime() {
     var now = new Date(),
@@ -504,9 +570,21 @@ Page({
   },
 
   /**
-* 用户点击右上角分享
-*/
+  * 用户点击右上角分享
+  */
   onShareAppMessage: function () {
 
+  },
+
+  /**
+   * 页面卸载时清理资源
+   */
+  onUnload: function () {
+    // 销毁音频上下文，释放资源
+    if (this.audioContext) {
+      this.audioContext.stop();
+      this.audioContext.destroy();
+      this.audioContext = null;
+    }
   }
 })

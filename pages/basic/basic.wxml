@@ -42,7 +42,7 @@
         <view wx:if="{{!display}}" animation="{{item.ani_back}}" bindtap="reverse" class="flex-item back" data-myvalue="{{item.value}}">
           {{item.name}}
         </view>
-        <view wx:if="{{display}}" class="flex-item-display">
+        <view wx:if="{{display}}" class="flex-item-display" bindtap="playSoundOnDisplay" data-pinyin="{{item.name}}">
           <view class="display-value">{{item.value}}</view>
           <view class="display-name">{{item.name}}</view>
         </view>

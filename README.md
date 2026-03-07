@@ -17,6 +17,8 @@
 
 :heavy_check_mark: 乱序
 
+:heavy_check_mark: 语音播放 🔊
+
 ### 进阶
 
 :ballot_box_with_check: 九键
@@ -38,7 +40,6 @@
 ~~:ballot_box: 收藏的文字按日期查询~~
 
 敬请期待：
-- 发音
 - 正向认识汉字与拼音
 ……
 

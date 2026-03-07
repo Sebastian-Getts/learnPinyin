@@ -2,6 +2,7 @@
   <text class="line">使用说明</text>
   <text class="line" style="font-size: 36rpx">基础</text>
   <text class="content"> 全局分两部分，顶部操作栏，顶部下方是展示区域。顶部操作栏有六个按钮，分两行。第一行是选择按钮，三选一，选中后会在下发展示区域展示相关内容。第二行是操作按钮。</text>
+  <text class="content" style="margin-top: 20rpx;"> 🔊 <text style="font-weight: bold;">语音播放功能：</text>点击任意声母或韵母卡片，卡片翻转的同时会自动播放对应的拼音发音。在展开模式下，点击卡片也可以直接播放发音。支持所有声母和韵母的标准发音，帮助您更好地学习拼音。</text>
   <text class="line" style="font-size: 36rpx">进阶</text>
   <text class="content">用来熟悉字母在九键键盘中的布局。屏幕中间灰色部分会随机显示五个字母，使用者需要按顺序依次按下虚拟键盘中包含目标字母的按键，待五个字母全部输入正确后，按空格键确认，之后会重新生产五个目标字母。</text>
   <text class="line">初衷</text>
